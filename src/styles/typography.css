@@ -1,0 +1,16 @@
+html,
+button {
+  font-family: 'Tajawal', 'Cairo', 'Noto Sans Arabic', 'Segoe UI', Arial, sans-serif;
+}
+h1,
+h2,
+h3 {
+  font-weight: 500;
+  line-height: 1.45;
+}
+p {
+  line-height: 1.8;
+}
+.tabular-nums {
+  font-variant-numeric: tabular-nums;
+}

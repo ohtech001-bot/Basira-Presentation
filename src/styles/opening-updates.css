@@ -1,0 +1,133 @@
+/* Preserve the supplied portrait and original square logo. No filter/blend or recoloring. */
+.opening-image {
+  right: 100px;
+  width: 860px;
+  height: 1010px;
+  top: 35px;
+}
+.opening-image img {
+  object-fit: contain;
+  object-position: center;
+}
+.opening-image-shade {
+  background: linear-gradient(
+    90deg,
+    #061018 0%,
+    rgb(6 16 24 / 94%) 21%,
+    rgb(6 16 24 / 35%) 48%,
+    transparent 64%
+  );
+}
+.opening-vignette {
+  background: linear-gradient(
+    0deg,
+    rgb(6 16 24 / 30%),
+    transparent 18%,
+    transparent 88%,
+    rgb(6 16 24 / 22%)
+  );
+}
+.problem-visual .opening-image {
+  right: 80px;
+}
+.problem-visual .opening-image-shade {
+  background: linear-gradient(
+    90deg,
+    #061018 8%,
+    rgb(6 16 24 / 90%) 28%,
+    rgb(6 16 24 / 45%) 58%,
+    transparent
+  );
+}
+.problem-question h1 {
+  font-size: 66px;
+}
+.problem-fragment p {
+  font-size: 30px;
+  line-height: 1.65;
+}
+.problem-fragment {
+  width: 365px;
+}
+.problem-fragment--content {
+  right: 1405px;
+}
+.problem-fragment-symbol {
+  width: 65px;
+  height: 65px;
+  margin-bottom: 17px;
+}
+.basira-intro-gold-line {
+  top: 100px;
+}
+.basira-intro-brand {
+  top: 140px;
+}
+.basira-intro-brand .basira-mark__symbol {
+  width: 330px;
+  height: 330px;
+}
+.basira-mark__symbol .ui-image {
+  border-radius: 4px;
+  background: #000;
+}
+.basira-intro-name {
+  position: absolute;
+  top: 470px;
+  left: 200px;
+  right: 200px;
+}
+.basira-intro-name h1 {
+  font-size: 98px;
+  line-height: 1.2;
+  color: var(--ivory);
+}
+.basira-intro-name p {
+  margin-top: 15px;
+  font-size: 35px;
+  color: var(--text-muted);
+}
+.basira-intro-verbs {
+  top: 695px;
+}
+.basira-intro-verb span {
+  font-size: 48px;
+}
+.basira-intro-verb {
+  gap: 16px;
+}
+.basira-intro-verb:not(:last-child)::after {
+  top: 50px;
+}
+.basira-intro-statement {
+  top: 880px;
+}
+.basira-intro-statement h1 {
+  font-size: 31px;
+}
+.basira-intro-statement strong {
+  font-size: 43px;
+}
+.logo-unavailable {
+  font-size: 16px;
+  color: var(--text-muted);
+}
+.loading-brand .basira-mark__symbol {
+  width: 250px;
+  height: 250px;
+}
+.loading-brand .basira-mark__word {
+  font-size: 60px;
+}
+.qaytbay-sabil-placeholder {
+  display: grid;
+  place-items: center;
+  background: linear-gradient(145deg, #0c2228, #061018);
+  color: var(--stone);
+  border: 1px solid rgb(200 169 104 / 15%);
+}
+.qaytbay-sabil-placeholder span {
+  font-size: 26px;
+  text-align: center;
+  line-height: 1.8;
+}

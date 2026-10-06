@@ -1,0 +1,209 @@
+.presentation-viewport {
+  position: fixed;
+  inset: 0;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  overflow: hidden;
+  isolation: isolate;
+}
+.stage-holder {
+  position: relative;
+  flex-shrink: 0;
+  overflow: hidden;
+}
+.presentation-stage {
+  position: absolute;
+  top: 0;
+  left: 0;
+  width: 1920px;
+  height: 1080px;
+  transform: scale(var(--stage-scale, 1));
+  transform-origin: top left;
+  overflow: hidden;
+  background: var(--bg-primary);
+}
+.scene-frame,
+.scene-layer {
+  position: absolute;
+  inset: 0;
+  overflow: hidden;
+}
+.scene-frame {
+  isolation: isolate;
+}
+.scene-progress {
+  position: absolute;
+  bottom: 0;
+  left: 0;
+  right: 0;
+  height: 3px;
+  background: rgb(200 169 104 / 9%);
+  z-index: 10;
+  direction: rtl;
+}
+.scene-progress-fill {
+  height: 100%;
+  margin-right: 0;
+  margin-left: auto;
+  background: var(--gold);
+  box-shadow: 0 0 22px rgb(200 169 104 / 25%);
+  transition: width 650ms ease;
+}
+.presenter-controls {
+  position: fixed;
+  bottom: 22px;
+  left: 50%;
+  z-index: 30;
+  display: flex;
+  direction: ltr;
+  align-items: center;
+  gap: 10px;
+  padding: 10px 15px;
+  border: 1px solid rgb(200 169 104 / 22%);
+  border-radius: 12px;
+  background: rgb(4 16 21 / 94%);
+  box-shadow: 0 12px 35px rgb(0 0 0 / 25%);
+  backdrop-filter: blur(18px);
+  opacity: 0;
+  transform: translate(-50%, 12px);
+  pointer-events: none;
+  transition:
+    opacity 240ms ease,
+    transform 240ms ease;
+}
+.presenter-controls.is-visible,
+.presenter-controls:focus-within {
+  opacity: 1;
+  pointer-events: auto;
+  transform: translate(-50%, 0);
+}
+.presenter-controls button {
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  gap: 8px;
+  border: 0;
+  border-radius: 7px;
+  color: var(--ivory);
+  background: transparent;
+  padding: 8px 12px;
+  cursor: pointer;
+  font-size: 14px;
+  line-height: 1.3;
+  white-space: nowrap;
+}
+.presenter-controls button:hover:not(:disabled) {
+  background: rgb(200 169 104 / 12%);
+  color: var(--gold);
+}
+.presenter-controls .control-icon {
+  width: 36px;
+  padding: 8px;
+}
+.control-position {
+  display: flex;
+  align-items: center;
+  gap: 3px;
+  color: var(--text-muted);
+  font-size: 11px;
+  white-space: nowrap;
+  font-variant-numeric: tabular-nums;
+  padding-inline: 7px;
+}
+.control-position b {
+  color: var(--gold);
+  font-size: 15px;
+  font-weight: 500;
+}
+.control-position i {
+  height: 12px;
+  width: 1px;
+  margin-inline: 9px;
+  background: rgb(200 169 104 / 25%);
+}
+.control-position small {
+  font-size: 11px;
+}
+.control-divider {
+  width: 1px;
+  height: 24px;
+  background: rgb(200 169 104 / 17%);
+}
+.loading-screen,
+.scene-error {
+  position: absolute;
+  inset: 0;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+  background: radial-gradient(ellipse at center, var(--bg-secondary), var(--bg-primary) 65%);
+}
+.loading-mark {
+  font-size: 116px;
+  color: var(--ivory);
+  font-weight: 600;
+  letter-spacing: -4px;
+}
+.loading-line {
+  width: 100px;
+  height: 1px;
+  background: var(--gold);
+  margin: 30px 0;
+  animation: loading-pulse 1500ms ease-in-out infinite alternate;
+}
+.loading-screen p {
+  color: var(--text-muted);
+  font-size: 24px;
+}
+.scene-error h1 {
+  font-size: 64px;
+}
+.scene-error span {
+  color: var(--gold);
+  font-size: 40px;
+  margin-bottom: 30px;
+}
+.scene-error p {
+  color: var(--text-muted);
+  font-size: 28px;
+  margin-top: 20px;
+}
+.fullscreen-notice {
+  position: fixed;
+  bottom: 92px;
+  left: 50%;
+  transform: translateX(-50%);
+  z-index: 50;
+  padding: 14px 20px;
+  background: var(--navy);
+  border: 1px solid var(--gold);
+  border-radius: 8px;
+  font-size: 14px;
+  max-width: 90vw;
+}
+@keyframes loading-pulse {
+  from {
+    opacity: 0.25;
+    transform: scaleX(0.5);
+  }
+  to {
+    opacity: 1;
+    transform: scaleX(1);
+  }
+}
+@media (max-width: 600px) {
+  .presenter-controls {
+    bottom: 10px;
+    gap: 4px;
+    padding: 6px;
+  }
+  .presenter-controls button {
+    padding: 8px;
+    font-size: 12px;
+  }
+  .control-position {
+    padding: 0 3px;
+  }
+}

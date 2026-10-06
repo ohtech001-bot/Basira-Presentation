@@ -1,0 +1,701 @@
+/* Story scenes share the fixed 1920 × 1080 presentation stage. */
+.story-eyebrow {
+  display: block;
+  color: var(--gold);
+  font-size: 23px;
+  line-height: 1.6;
+  font-weight: 400;
+}
+
+/* Scene 9: seven audiences, with a quiet global visual. */
+.audience-layout {
+  display: grid;
+  grid-template-columns: 1.35fr 1fr;
+  gap: 60px;
+  height: 100%;
+}
+.audience-cards {
+  display: grid;
+  grid-template-columns: 1fr 1fr;
+  grid-template-rows: repeat(3, 1fr);
+  gap: 20px;
+  padding: 22px 0 36px;
+}
+.audience-card {
+  display: flex;
+  align-items: center;
+  gap: 23px;
+  padding: 27px;
+  background: linear-gradient(125deg, rgb(18 62 64 / 40%), rgb(15 31 39 / 72%));
+  border: 1px solid rgb(200 169 104 / 17%);
+  border-radius: 15px;
+}
+.audience-card > svg {
+  flex-shrink: 0;
+  color: var(--gold);
+}
+.audience-card h2 {
+  font-size: 31px;
+  line-height: 1.5;
+  color: var(--ivory);
+}
+.audience-world {
+  position: relative;
+  display: flex;
+  align-items: center;
+  flex-direction: column;
+  padding: 64px 40px 0;
+}
+.audience-globe {
+  color: var(--gold);
+  opacity: 0.68;
+  margin-top: 15px;
+}
+.audience-orbit {
+  position: absolute;
+  width: 410px;
+  height: 410px;
+  top: 19px;
+  border: 1px solid rgb(200 169 104 / 12%);
+  border-radius: 50%;
+}
+.audience-orbit--two {
+  width: 515px;
+  height: 515px;
+  top: -33px;
+  border-color: rgb(23 106 96 / 22%);
+}
+.audience-orbit::after {
+  content: '';
+  position: absolute;
+  width: 9px;
+  height: 9px;
+  border-radius: 50%;
+  background: var(--gold);
+  top: 60px;
+  right: 56px;
+  box-shadow: 0 0 28px rgb(200 169 104 / 40%);
+}
+.audience-orbit--two::after {
+  right: auto;
+  left: 73px;
+  top: 437px;
+  width: 6px;
+  height: 6px;
+  background: #38867b;
+}
+.audience-global {
+  position: relative;
+  margin-top: 91px;
+  width: 100%;
+  text-align: center;
+}
+.audience-global h2 {
+  font-size: 36px;
+  line-height: 1.55;
+  margin-top: 15px;
+  color: var(--ivory);
+}
+
+/* Scene 10: one hero image moves through six actual product screens. */
+.prototype-layout {
+  height: 100%;
+  display: grid;
+  grid-template-columns: 475px 1fr;
+  grid-template-rows: 590px 100px;
+  gap: 25px 50px;
+}
+.prototype-story {
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  padding-left: 4px;
+}
+.prototype-story h2 {
+  font-size: 42px;
+  line-height: 1.65;
+  margin-top: 22px;
+  font-weight: 400;
+  color: var(--ivory);
+}
+.prototype-story h2 em {
+  font-style: normal;
+  color: var(--gold);
+}
+.prototype-chapter {
+  display: flex;
+  align-items: center;
+  gap: 18px;
+  margin-top: 37px;
+}
+.prototype-chapter > span {
+  color: var(--gold);
+  font-size: 22px;
+}
+.prototype-chapter > i {
+  height: 1px;
+  width: 28px;
+  background: rgb(200 169 104 / 45%);
+}
+.prototype-chapter p {
+  font-size: 28px;
+  color: var(--ivory);
+}
+.prototype-stage-caption {
+  font-size: 20px;
+  color: var(--text-muted);
+  margin-top: 22px;
+}
+.prototype-hero {
+  height: 590px;
+}
+.prototype-current {
+  position: absolute;
+  inset: 9px;
+}
+.prototype-flow {
+  display: grid;
+  grid-template-columns: repeat(6, 1fr);
+  grid-column: 1 / -1;
+  border-top: 1px solid rgb(200 169 104 / 18%);
+  padding-top: 18px;
+}
+.prototype-stop {
+  border: 0;
+  background: transparent;
+  color: var(--text-muted);
+  padding: 10px;
+  font-size: 23px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  gap: 13px;
+  cursor: pointer;
+  white-space: nowrap;
+}
+.prototype-stop-number {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  font-size: 18px;
+  color: var(--gold);
+  width: 35px;
+  height: 35px;
+  border: 1px solid rgb(200 169 104 / 24%);
+  border-radius: 50%;
+  flex-shrink: 0;
+}
+.prototype-stop > svg {
+  opacity: 0.4;
+}
+.prototype-stop.is-active {
+  color: var(--ivory);
+}
+.prototype-stop.is-active .prototype-stop-number {
+  background: var(--gold);
+  color: var(--navy);
+  border-color: var(--gold);
+}
+.prototype-stop.is-past .prototype-stop-number {
+  border-color: rgb(45 131 115 / 75%);
+  color: #78b7a8;
+}
+
+/* Scene 11: the only controlled page flip in the presentation. */
+.impact-background {
+  position: absolute;
+  inset: -80px -110px -85px;
+  opacity: 0.06;
+  pointer-events: none;
+  mask-image: linear-gradient(transparent, black 35%, transparent);
+  z-index: -1;
+}
+.impact-layout {
+  display: grid;
+  grid-template-columns: 1.07fr 1fr;
+  gap: 48px;
+  height: 100%;
+}
+.impact-cards {
+  display: grid;
+  grid-template-columns: 1fr 1fr;
+  grid-template-rows: repeat(3, 1fr);
+  gap: 20px;
+  padding: 10px 0 40px;
+}
+.impact-card {
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  gap: 18px;
+  background: rgb(7 24 31 / 82%);
+  border: 1px solid rgb(200 169 104 / 17%);
+  border-radius: 13px;
+  padding: 25px 29px;
+}
+.impact-card > svg {
+  color: var(--gold);
+}
+.impact-card h2 {
+  font-size: 28px;
+  line-height: 1.55;
+  color: var(--ivory);
+}
+.impact-transition {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  padding-top: 62px;
+}
+.impact-flip-wrap {
+  width: 100%;
+  height: 480px;
+}
+.impact-traditional {
+  height: 100%;
+  background: var(--ivory);
+  color: var(--navy);
+  padding: 32px 46px;
+  display: flex;
+  flex-direction: column;
+  align-items: flex-start;
+}
+.impact-traditional > svg {
+  color: #917445;
+  margin-bottom: 14px;
+}
+.impact-traditional > span {
+  font-size: 22px;
+  color: #796b50;
+}
+.impact-traditional h2 {
+  font-size: 36px;
+  margin-top: 8px;
+}
+.impact-traditional p {
+  font-size: 24px;
+  margin-top: 12px;
+}
+.impact-text-lines {
+  display: flex;
+  flex-direction: column;
+  gap: 12px;
+  width: 100%;
+  margin-top: 22px;
+}
+.impact-text-lines i {
+  display: block;
+  width: 100%;
+  height: 2px;
+  background: rgb(50 65 65 / 15%);
+}
+.impact-text-lines i:nth-child(2) {
+  width: 88%;
+}
+.impact-text-lines i:nth-child(3) {
+  width: 95%;
+}
+.impact-text-lines i:nth-child(5) {
+  width: 65%;
+}
+.impact-flip-caption {
+  display: flex;
+  align-items: center;
+  gap: 26px;
+  font-size: 30px;
+  margin-top: 30px;
+  color: var(--stone);
+}
+.impact-flip-caption svg {
+  color: var(--gold);
+}
+.impact-flip-caption strong {
+  color: var(--ivory);
+  font-weight: 400;
+}
+
+/* Scene 12: official durations retained and the gold line follows steps. */
+.timeline-track {
+  position: absolute;
+  top: 300px;
+  height: 2px;
+  inset-inline: 35px;
+}
+.timeline-track-base,
+.timeline-track-gold {
+  position: absolute;
+  inset: 0;
+}
+.timeline-track-base {
+  background: rgb(200 169 104 / 13%);
+}
+.timeline-track-gold {
+  background: var(--gold);
+  transform-origin: right center;
+  box-shadow: 0 0 24px rgb(200 169 104 / 20%);
+}
+.timeline-phases {
+  display: grid;
+  grid-template-columns: repeat(4, 1fr);
+  gap: 24px;
+  height: 100%;
+}
+.timeline-phase {
+  position: relative;
+  text-align: center;
+}
+.timeline-phase-top {
+  padding-top: 80px;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  gap: 31px;
+}
+.timeline-phase-top > svg {
+  color: var(--gold);
+}
+.timeline-point {
+  position: absolute;
+  top: 264px;
+  right: calc(50% - 36px);
+  height: 73px;
+  width: 73px;
+  display: grid;
+  place-items: center;
+  border-radius: 50%;
+  border: 1px solid rgb(200 169 104 / 24%);
+  background: #07151f;
+  color: var(--text-muted);
+  font-size: 27px;
+  transition:
+    border-color 0.8s,
+    color 0.8s,
+    background 0.8s;
+}
+.timeline-phase.is-visible .timeline-point {
+  color: var(--navy);
+  border-color: var(--gold);
+  background: var(--gold);
+}
+.timeline-phase-bottom {
+  position: absolute;
+  top: 382px;
+  inset-inline: 23px;
+}
+.timeline-phase-bottom h2 {
+  color: var(--ivory);
+  font-size: 34px;
+  line-height: 1.6;
+  min-height: 110px;
+}
+.timeline-phase-bottom p {
+  color: var(--gold);
+  font-size: 27px;
+  margin-top: 22px;
+}
+.timeline-continuous {
+  position: absolute;
+  bottom: 2px;
+  right: 0;
+  left: 0;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  gap: 14px;
+  color: var(--text-muted);
+  font-size: 23px;
+}
+.timeline-continuous > span {
+  width: 7px;
+  height: 7px;
+  border-radius: 50%;
+  background: var(--gold);
+}
+
+/* Scene 13: exact authorized figures, without invented allocations. */
+.budget-layout {
+  display: grid;
+  grid-template-columns: 1.13fr 1fr;
+  gap: 65px;
+  height: 100%;
+  padding: 26px 0 35px;
+}
+.budget-founding {
+  border: 1px solid rgb(200 169 104 / 25%);
+  border-radius: 18px;
+  background: linear-gradient(135deg, rgb(17 57 57 / 53%), rgb(9 28 37 / 60%));
+  padding: 52px;
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+}
+.budget-founding > .story-eyebrow {
+  font-size: 29px;
+}
+.budget-amount {
+  display: flex;
+  align-items: baseline;
+  gap: 19px;
+  justify-content: flex-end;
+  margin-top: 18px;
+  font-size: 156px;
+  line-height: 1.2;
+  color: var(--ivory);
+  font-weight: 400;
+}
+.budget-amount > span:last-child {
+  color: var(--gold);
+  font-size: 61px;
+}
+.budget-gold-rule {
+  width: 110px;
+  height: 1px;
+  background: var(--gold);
+  margin: 37px 0;
+}
+.budget-voluntary {
+  display: flex;
+  align-items: center;
+  gap: 19px;
+}
+.budget-voluntary > svg {
+  color: var(--gold);
+  flex-shrink: 0;
+}
+.budget-voluntary p {
+  font-size: 27px;
+  line-height: 1.7;
+  color: var(--ivory);
+}
+.budget-operating {
+  display: flex;
+  flex-direction: column;
+  padding-top: 26px;
+}
+.budget-monthly {
+  padding: 14px 0 30px;
+  border-bottom: 1px solid rgb(200 169 104 / 16%);
+}
+.budget-monthly-amount {
+  display: flex;
+  align-items: baseline;
+  gap: 30px;
+  margin-top: 18px;
+  color: var(--ivory);
+}
+.budget-monthly-amount > span:first-child {
+  font-size: 38px;
+  color: var(--stone);
+}
+.budget-monthly-amount > span:last-child {
+  font-size: 92px;
+}
+.budget-services {
+  display: grid;
+  grid-template-columns: 1fr 1fr;
+  gap: 18px;
+  padding-top: 33px;
+}
+.budget-services > div {
+  min-height: 134px;
+  position: relative;
+  padding: 20px 22px;
+  display: flex;
+  align-items: center;
+  gap: 17px;
+  border: 1px solid rgb(200 169 104 / 13%);
+  border-radius: 12px;
+  background: rgb(12 35 40 / 44%);
+}
+.budget-services svg {
+  color: var(--gold);
+  flex-shrink: 0;
+}
+.budget-services span {
+  color: var(--ivory);
+  font-size: 28px;
+}
+.budget-services b {
+  position: absolute;
+  top: 11px;
+  left: 15px;
+  color: var(--text-muted);
+  font-size: 14px;
+  font-weight: 400;
+  opacity: 0.55;
+}
+
+/* Scene 14: only the confirmed three names. */
+.team-connection {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  gap: 30px;
+  color: var(--gold);
+  padding-top: 37px;
+}
+.team-connection > span {
+  width: 200px;
+  height: 1px;
+  background: linear-gradient(90deg, transparent, rgb(200 169 104 / 40%), transparent);
+}
+.team-members {
+  display: grid;
+  grid-template-columns: repeat(3, 1fr);
+  gap: 36px;
+  margin-top: 54px;
+}
+.team-member {
+  position: relative;
+  min-height: 468px;
+  border: 1px solid rgb(200 169 104 / 17%);
+  border-radius: 17px;
+  background: linear-gradient(145deg, rgb(17 56 58 / 42%), rgb(8 27 35 / 75%));
+  padding: 65px 30px 40px;
+  text-align: center;
+}
+.team-member-number {
+  position: absolute;
+  top: 25px;
+  right: 30px;
+  font-size: 19px;
+  color: var(--gold);
+  opacity: 0.6;
+}
+.team-monogram {
+  width: 175px;
+  height: 175px;
+  margin: 0 auto;
+  display: grid;
+  place-items: center;
+  color: var(--gold);
+  font-size: 67px;
+  border: 1px solid rgb(200 169 104 / 27%);
+  border-radius: 50%;
+  background: rgb(9 29 36 / 80%);
+}
+.team-member-rule {
+  width: 40px;
+  height: 1px;
+  margin: 42px auto 28px;
+  background: var(--gold);
+}
+.team-member h2 {
+  font-size: 39px;
+  line-height: 1.55;
+  color: var(--ivory);
+}
+
+/* Scene 15: staged expansion, then the original logo and exact closing. */
+.story-vision {
+  background: #061018;
+}
+.vision-atmosphere {
+  position: absolute;
+  inset: 0;
+  pointer-events: none;
+  background: radial-gradient(ellipse at 50% 63%, rgb(14 73 68 / 30%), transparent 67%);
+}
+.vision-content {
+  position: absolute;
+  inset: 0;
+}
+.vision-heading {
+  position: absolute;
+  top: 138px;
+  left: 150px;
+  right: 150px;
+  text-align: center;
+}
+.vision-heading h1 {
+  color: var(--ivory);
+  font-size: 65px;
+  line-height: 1.55;
+  font-weight: 400;
+  margin-top: 24px;
+}
+.vision-path {
+  position: absolute;
+  top: 550px;
+  left: 140px;
+  right: 140px;
+  height: 350px;
+  display: grid;
+  grid-template-columns: repeat(5, 1fr);
+  gap: 25px;
+}
+.vision-path-base,
+.vision-path-line {
+  position: absolute;
+  top: 51px;
+  height: 1px;
+  left: 135px;
+  right: 135px;
+}
+.vision-path-base {
+  background: rgb(200 169 104 / 14%);
+}
+.vision-path-line {
+  background: var(--gold);
+  transform-origin: right center;
+}
+.vision-stop {
+  text-align: center;
+  position: relative;
+}
+.vision-stop-icon {
+  height: 104px;
+  width: 104px;
+  margin: 0 auto;
+  display: grid;
+  place-items: center;
+  color: var(--gold);
+  background: #0a2029;
+  border: 1px solid rgb(200 169 104 / 52%);
+  border-radius: 50%;
+}
+.vision-stop h2 {
+  font-size: 31px;
+  line-height: 1.5;
+  color: var(--ivory);
+  margin-top: 39px;
+  min-height: 95px;
+}
+.vision-stop p {
+  color: var(--text-muted);
+  font-size: 20px;
+  line-height: 1.5;
+}
+.vision-closing {
+  position: absolute;
+  inset: 0;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+}
+.vision-logo {
+  flex-direction: column;
+  gap: 34px;
+}
+.vision-logo .basira-mark__symbol {
+  width: 305px;
+  height: 305px;
+}
+.vision-logo .basira-mark__word {
+  font-size: 125px;
+  line-height: 1.15;
+  padding-bottom: 0;
+  letter-spacing: -0.04em;
+}
+.vision-closing-line {
+  height: 1px;
+  width: 220px;
+  background: linear-gradient(90deg, transparent, var(--gold), transparent);
+  margin: 42px 0 34px;
+}
+.vision-closing > p {
+  color: var(--ivory);
+  font-size: 46px;
+  line-height: 1.7;
+}

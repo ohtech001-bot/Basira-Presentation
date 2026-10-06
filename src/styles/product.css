@@ -1,0 +1,131 @@
+.ui-image {
+  position: relative;
+  width: 100%;
+  height: 100%;
+  min-width: 0;
+  overflow: hidden;
+  background: #03080d;
+  isolation: isolate;
+}
+.ui-image img {
+  display: block;
+  width: 100%;
+  height: 100%;
+  transition: opacity 450ms ease;
+}
+.ui-image__status {
+  position: absolute;
+  inset: 0;
+  display: grid;
+  place-items: center;
+  padding: 20px;
+  color: var(--text-muted);
+  font-size: 24px;
+}
+.ui-image__loading-dot {
+  width: 10px;
+  height: 10px;
+  border-radius: 50%;
+  background: var(--gold);
+  box-shadow: 0 0 28px rgb(200 169 104 / 30%);
+  animation: loading-pulse 1s ease-in-out infinite alternate;
+}
+.product-scene {
+  padding: 75px 110px 70px;
+  background: #061018;
+}
+.product-atmosphere {
+  position: absolute;
+  inset: 0;
+  z-index: -1;
+  pointer-events: none;
+  background: radial-gradient(ellipse at 20% 70%, rgb(15 77 70 / 18%), transparent 65%);
+}
+.product-atmosphere::after {
+  content: '';
+  position: absolute;
+  inset: 0;
+  opacity: 0.025;
+  background-image: url("data:image/svg+xml,%3Csvg viewBox='0 0 140 140' xmlns='http://www.w3.org/2000/svg'%3E%3Cfilter id='n'%3E%3CfeTurbulence type='fractalNoise' baseFrequency='.8' numOctaves='3' stitchTiles='stitch'/%3E%3C/filter%3E%3Cpath fill='%23fff' filter='url(%23n)' d='M0 0h140v140H0z'/%3E%3C/svg%3E");
+}
+.product-heading {
+  position: absolute;
+  right: 110px;
+  top: 68px;
+  left: 270px;
+}
+.product-kicker {
+  display: flex;
+  align-items: center;
+  gap: 16px;
+  color: var(--gold);
+  font-size: 22px;
+  line-height: 1.6;
+}
+.product-kicker i {
+  width: 42px;
+  height: 1px;
+  background: currentColor;
+}
+.product-kicker b {
+  margin-right: 12px;
+  font-size: 18px;
+  opacity: 0.6;
+  font-weight: 400;
+}
+.product-heading h1 {
+  font-size: 72px;
+  color: var(--ivory);
+  margin-top: 10px;
+  font-weight: 500;
+  line-height: 1.4;
+}
+.product-heading p {
+  font-size: 28px;
+  color: var(--text-muted);
+  margin-top: 7px;
+}
+.product-body {
+  position: absolute;
+  top: 275px;
+  right: 110px;
+  left: 110px;
+  bottom: 85px;
+}
+.product-brand {
+  position: absolute;
+  top: 63px;
+  left: 105px;
+}
+.product-brand .basira-mark__symbol {
+  width: 132px;
+  height: 132px;
+}
+.product-brand .ui-image {
+  background: #000;
+}
+.product-screen {
+  position: relative;
+  border: 1px solid rgb(200 169 104 / 30%);
+  border-radius: 14px;
+  padding: 9px;
+  background: rgb(15 33 37 / 88%);
+  box-shadow: 0 30px 70px rgb(0 0 0 / 30%);
+  overflow: hidden;
+}
+.product-screen .ui-image {
+  border-radius: 7px;
+}
+.product-caption {
+  display: flex;
+  align-items: center;
+  gap: 14px;
+  color: var(--stone);
+  font-size: 24px;
+}
+.product-caption::before {
+  content: '';
+  width: 30px;
+  height: 1px;
+  background: var(--gold);
+}
