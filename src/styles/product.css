@@ -4,14 +4,14 @@
   height: 100%;
   min-width: 0;
   overflow: hidden;
-  background: #03080d;
+  background: #061018;
   isolation: isolate;
 }
 .ui-image img {
   display: block;
   width: 100%;
   height: 100%;
-  transition: opacity 450ms ease;
+  transition: opacity 180ms ease;
 }
 .ui-image__status {
   position: absolute;
@@ -23,23 +23,22 @@
   font-size: 24px;
 }
 .ui-image__loading-dot {
-  width: 10px;
-  height: 10px;
+  width: 8px;
+  height: 8px;
   border-radius: 50%;
   background: var(--gold);
-  box-shadow: 0 0 28px rgb(200 169 104 / 30%);
+  box-shadow: 0 0 20px rgb(200 169 104 / 25%);
   animation: loading-pulse 1s ease-in-out infinite alternate;
 }
 .product-scene {
-  padding: 75px 110px 70px;
-  background: #061018;
+  background: #07151f;
 }
 .product-atmosphere {
   position: absolute;
   inset: 0;
   z-index: -1;
   pointer-events: none;
-  background: radial-gradient(ellipse at 20% 70%, rgb(15 77 70 / 18%), transparent 65%);
+  background: radial-gradient(ellipse at 8% 85%, rgb(16 73 69 / 25%), transparent 60%);
 }
 .product-atmosphere::after {
   content: '';
@@ -50,67 +49,84 @@
 }
 .product-heading {
   position: absolute;
-  right: 110px;
-  top: 68px;
-  left: 270px;
+  right: 96px;
+  top: 50px;
+  left: 230px;
 }
 .product-kicker {
   display: flex;
   align-items: center;
-  gap: 16px;
+  gap: 14px;
   color: var(--gold);
-  font-size: 22px;
-  line-height: 1.6;
+  font-size: 18px;
+  line-height: 1.4;
 }
 .product-kicker i {
-  width: 42px;
+  width: 30px;
   height: 1px;
   background: currentColor;
 }
 .product-kicker b {
-  margin-right: 12px;
-  font-size: 18px;
-  opacity: 0.6;
+  margin-right: 6px;
+  font-size: 16px;
   font-weight: 400;
+  color: var(--text-muted);
 }
 .product-heading h1 {
-  font-size: 72px;
+  font-size: 64px;
   color: var(--ivory);
-  margin-top: 10px;
+  margin-top: 7px;
   font-weight: 500;
-  line-height: 1.4;
+  line-height: 1.3;
 }
 .product-heading p {
-  font-size: 28px;
+  font-size: 25px;
   color: var(--text-muted);
   margin-top: 7px;
+  line-height: 1.55;
 }
 .product-body {
   position: absolute;
-  top: 275px;
-  right: 110px;
-  left: 110px;
-  bottom: 85px;
+  top: 220px;
+  right: 96px;
+  left: 96px;
+  bottom: 70px;
 }
 .product-brand {
   position: absolute;
-  top: 63px;
-  left: 105px;
+  top: 48px;
+  left: 96px;
+}
+.basira-mark {
+  display: flex;
+  align-items: center;
+  flex-direction: column;
+}
+.basira-mark__symbol {
+  width: 230px;
+  height: 230px;
+}
+.basira-mark__word {
+  display: block;
+  font-size: 76px;
+  font-weight: 600;
+  line-height: 1.5;
+  color: var(--ivory);
 }
 .product-brand .basira-mark__symbol {
-  width: 132px;
-  height: 132px;
+  width: 106px;
+  height: 106px;
 }
-.product-brand .ui-image {
+.basira-mark .ui-image {
   background: #000;
 }
 .product-screen {
   position: relative;
-  border: 1px solid rgb(200 169 104 / 30%);
-  border-radius: 14px;
-  padding: 9px;
-  background: rgb(15 33 37 / 88%);
-  box-shadow: 0 30px 70px rgb(0 0 0 / 30%);
+  border: 1px solid rgb(200 169 104 / 27%);
+  border-radius: 13px;
+  padding: 7px;
+  background: #0c232b;
+  box-shadow: 0 20px 50px rgb(0 0 0 / 20%);
   overflow: hidden;
 }
 .product-screen .ui-image {
@@ -121,11 +137,29 @@
   align-items: center;
   gap: 14px;
   color: var(--stone);
-  font-size: 24px;
+  font-size: 23px;
+  line-height: 1.5;
 }
 .product-caption::before {
   content: '';
-  width: 30px;
+  width: 28px;
   height: 1px;
   background: var(--gold);
+}
+.deck-eyebrow {
+  display: flex;
+  align-items: center;
+  gap: 14px;
+  color: var(--gold);
+  font-size: 24px;
+  line-height: 1.5;
+}
+.deck-eyebrow i {
+  width: 35px;
+  height: 1px;
+  background: var(--gold);
+}
+.loading-brand .basira-mark__symbol {
+  width: 230px;
+  height: 230px;
 }

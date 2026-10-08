@@ -1,427 +1,439 @@
-/* Story scenes share the fixed 1920 × 1080 presentation stage. */
-.story-eyebrow {
+/* Complete slides at the 1920 × 1080 reference stage. */
+:is(
+    .story-audience,
+    .story-prototype,
+    .story-impact,
+    .story-timeline,
+    .story-budget,
+    .story-team,
+    .story-vision
+  )
+  .story-eyebrow {
   display: block;
   color: var(--gold);
-  font-size: 23px;
-  line-height: 1.6;
+  font-size: 28px;
+  line-height: 1.5;
   font-weight: 400;
 }
-
-/* Scene 9: seven audiences, with a quiet global visual. */
-.audience-layout {
-  display: grid;
-  grid-template-columns: 1.35fr 1fr;
-  gap: 60px;
-  height: 100%;
+:is(
+    .story-audience,
+    .story-prototype,
+    .story-impact,
+    .story-timeline,
+    .story-budget,
+    .story-team,
+    .story-vision
+  )
+  .story-enter {
+  animation: story-slide-arrive 0.45s ease-out both;
 }
-.audience-cards {
+@keyframes story-slide-arrive {
+  from {
+    opacity: 0;
+    transform: translateY(12px);
+  }
+  to {
+    opacity: 1;
+    transform: translateY(0);
+  }
+}
+
+/* Seven audiences, all visible together. */
+.story-audience .audience-layout {
+  display: grid;
+  grid-template-columns: 1.42fr 1fr;
+  gap: 58px;
+  height: 100%;
+  padding: 28px 0 36px;
+}
+.story-audience .audience-cards {
   display: grid;
   grid-template-columns: 1fr 1fr;
   grid-template-rows: repeat(3, 1fr);
-  gap: 20px;
-  padding: 22px 0 36px;
+  gap: 22px;
 }
-.audience-card {
+.story-audience .audience-card {
   display: flex;
   align-items: center;
-  gap: 23px;
-  padding: 27px;
-  background: linear-gradient(125deg, rgb(18 62 64 / 40%), rgb(15 31 39 / 72%));
-  border: 1px solid rgb(200 169 104 / 17%);
+  gap: 24px;
+  padding: 29px;
+  background: linear-gradient(125deg, rgb(18 62 64 / 35%), rgb(15 31 39 / 65%));
+  border: 1px solid rgb(200 169 104 / 20%);
   border-radius: 15px;
 }
-.audience-card > svg {
+.story-audience .audience-card > svg {
   flex-shrink: 0;
   color: var(--gold);
 }
-.audience-card h2 {
-  font-size: 31px;
-  line-height: 1.5;
+.story-audience .audience-card h2 {
+  font-size: 34px;
+  line-height: 1.45;
   color: var(--ivory);
 }
-.audience-world {
+.story-audience .audience-world {
   position: relative;
   display: flex;
   align-items: center;
   flex-direction: column;
-  padding: 64px 40px 0;
+  justify-content: center;
+  padding: 24px;
 }
-.audience-globe {
+.story-audience .audience-globe {
   color: var(--gold);
-  opacity: 0.68;
-  margin-top: 15px;
+  opacity: 0.8;
+  flex-shrink: 0;
 }
-.audience-orbit {
+.story-audience .audience-orbit {
   position: absolute;
-  width: 410px;
-  height: 410px;
-  top: 19px;
-  border: 1px solid rgb(200 169 104 / 12%);
+  width: 400px;
+  height: 400px;
+  top: 47px;
+  border: 1px solid rgb(200 169 104 / 14%);
   border-radius: 50%;
+  box-shadow: 0 0 0 50px rgb(23 106 96 / 6%);
 }
-.audience-orbit--two {
-  width: 515px;
-  height: 515px;
-  top: -33px;
-  border-color: rgb(23 106 96 / 22%);
-}
-.audience-orbit::after {
-  content: '';
-  position: absolute;
-  width: 9px;
-  height: 9px;
-  border-radius: 50%;
-  background: var(--gold);
-  top: 60px;
-  right: 56px;
-  box-shadow: 0 0 28px rgb(200 169 104 / 40%);
-}
-.audience-orbit--two::after {
-  right: auto;
-  left: 73px;
-  top: 437px;
-  width: 6px;
-  height: 6px;
-  background: #38867b;
-}
-.audience-global {
+.story-audience .audience-global {
   position: relative;
-  margin-top: 91px;
-  width: 100%;
+  margin-top: 60px;
   text-align: center;
 }
-.audience-global h2 {
-  font-size: 36px;
-  line-height: 1.55;
+.story-audience .audience-global h2 {
+  font-size: 38px;
+  line-height: 1.5;
   margin-top: 15px;
   color: var(--ivory);
 }
 
-/* Scene 10: one hero image moves through six actual product screens. */
-.prototype-layout {
+/* One large product view and a complete six-screen journey. */
+.story-prototype .prototype-layout {
   height: 100%;
   display: grid;
-  grid-template-columns: 475px 1fr;
-  grid-template-rows: 590px 100px;
-  gap: 25px 50px;
+  grid-template-columns: 414px 1fr;
+  grid-template-rows: 610px 150px;
+  gap: 24px 40px;
 }
-.prototype-story {
+.story-prototype .prototype-story {
   display: flex;
   flex-direction: column;
   justify-content: center;
-  padding-left: 4px;
 }
-.prototype-story h2 {
-  font-size: 42px;
-  line-height: 1.65;
-  margin-top: 22px;
+.story-prototype .prototype-story h2 {
+  font-size: 43px;
+  line-height: 1.6;
+  margin-top: 25px;
   font-weight: 400;
   color: var(--ivory);
 }
-.prototype-story h2 em {
+.story-prototype .prototype-story h2 em {
   font-style: normal;
   color: var(--gold);
 }
-.prototype-chapter {
+.story-prototype .prototype-chapter {
   display: flex;
   align-items: center;
-  gap: 18px;
-  margin-top: 37px;
+  gap: 15px;
+  margin-top: 38px;
 }
-.prototype-chapter > span {
+.story-prototype .prototype-chapter > span {
   color: var(--gold);
-  font-size: 22px;
+  font-size: 25px;
+  white-space: nowrap;
 }
-.prototype-chapter > i {
+.story-prototype .prototype-chapter > i {
   height: 1px;
-  width: 28px;
+  width: 26px;
   background: rgb(200 169 104 / 45%);
+  flex-shrink: 0;
 }
-.prototype-chapter p {
-  font-size: 28px;
+.story-prototype .prototype-chapter p {
+  font-size: 29px;
   color: var(--ivory);
+  line-height: 1.4;
 }
-.prototype-stage-caption {
-  font-size: 20px;
+.story-prototype .prototype-stage-caption {
+  font-size: 28px;
   color: var(--text-muted);
   margin-top: 22px;
 }
-.prototype-hero {
-  height: 590px;
+.story-prototype .prototype-hero {
+  height: 610px;
 }
-.prototype-current {
+.story-prototype .prototype-current {
   position: absolute;
-  inset: 9px;
+  inset: 7px;
 }
-.prototype-flow {
+.story-prototype .prototype-flow {
   display: grid;
-  grid-template-columns: repeat(6, 1fr);
+  grid-template-columns: repeat(6, minmax(0, 1fr));
   grid-column: 1 / -1;
-  border-top: 1px solid rgb(200 169 104 / 18%);
-  padding-top: 18px;
+  gap: 22px;
 }
-.prototype-stop {
-  border: 0;
-  background: transparent;
+.story-prototype .prototype-stop {
+  position: relative;
+  border: 1px solid rgb(200 169 104 / 16%);
+  border-radius: 9px;
+  background: rgb(8 24 31 / 65%);
   color: var(--text-muted);
-  padding: 10px;
-  font-size: 23px;
+  padding: 7px 10px 6px;
+  cursor: pointer;
+  min-width: 0;
+  transition:
+    border-color 0.2s,
+    color 0.2s;
+}
+.story-prototype .prototype-stop-image {
+  height: 90px;
+}
+.story-prototype .prototype-stop-label {
   display: flex;
   align-items: center;
   justify-content: center;
-  gap: 13px;
-  cursor: pointer;
+  gap: 8px;
+  font-size: 22px;
+  line-height: 1.35;
+  margin-top: 6px;
   white-space: nowrap;
 }
-.prototype-stop-number {
-  display: flex;
-  align-items: center;
-  justify-content: center;
-  font-size: 18px;
+.story-prototype .prototype-stop-label b {
+  font-size: 17px;
   color: var(--gold);
-  width: 35px;
-  height: 35px;
-  border: 1px solid rgb(200 169 104 / 24%);
-  border-radius: 50%;
-  flex-shrink: 0;
+  font-weight: 400;
 }
-.prototype-stop > svg {
-  opacity: 0.4;
+.story-prototype .prototype-stop > svg {
+  position: absolute;
+  left: -22px;
+  top: 51px;
+  color: var(--gold);
+  opacity: 0.6;
 }
-.prototype-stop.is-active {
+.story-prototype .prototype-stop.is-active {
   color: var(--ivory);
-}
-.prototype-stop.is-active .prototype-stop-number {
-  background: var(--gold);
-  color: var(--navy);
   border-color: var(--gold);
 }
-.prototype-stop.is-past .prototype-stop-number {
-  border-color: rgb(45 131 115 / 75%);
-  color: #78b7a8;
+.story-prototype .prototype-stop:hover {
+  color: var(--ivory);
+  border-color: rgb(200 169 104 / 65%);
+}
+.story-prototype .prototype-stop:focus-visible {
+  outline: 2px solid var(--gold);
+  outline-offset: 4px;
 }
 
-/* Scene 11: the only controlled page flip in the presentation. */
-.impact-background {
+/* Six goals remain visible while the small before/after panel turns itself. */
+.story-impact .impact-background {
   position: absolute;
-  inset: -80px -110px -85px;
-  opacity: 0.06;
+  inset: -80px -96px -70px;
+  opacity: 0.055;
   pointer-events: none;
   mask-image: linear-gradient(transparent, black 35%, transparent);
   z-index: -1;
 }
-.impact-layout {
+.story-impact .impact-layout {
   display: grid;
-  grid-template-columns: 1.07fr 1fr;
-  gap: 48px;
+  grid-template-columns: 1.58fr 1fr;
+  gap: 54px;
   height: 100%;
 }
-.impact-cards {
+.story-impact .impact-cards {
   display: grid;
   grid-template-columns: 1fr 1fr;
   grid-template-rows: repeat(3, 1fr);
-  gap: 20px;
-  padding: 10px 0 40px;
+  gap: 22px;
+  padding: 18px 0 38px;
 }
-.impact-card {
+.story-impact .impact-card {
   display: flex;
   flex-direction: column;
   justify-content: center;
   gap: 18px;
-  background: rgb(7 24 31 / 82%);
-  border: 1px solid rgb(200 169 104 / 17%);
+  background: rgb(7 24 31 / 75%);
+  border: 1px solid rgb(200 169 104 / 20%);
   border-radius: 13px;
-  padding: 25px 29px;
+  padding: 26px 31px;
 }
-.impact-card > svg {
+.story-impact .impact-card > svg {
   color: var(--gold);
 }
-.impact-card h2 {
-  font-size: 28px;
-  line-height: 1.55;
+.story-impact .impact-card h2 {
+  font-size: 32px;
+  line-height: 1.45;
   color: var(--ivory);
 }
-.impact-transition {
+.story-impact .impact-transition {
   display: flex;
   flex-direction: column;
   align-items: center;
-  padding-top: 62px;
+  justify-content: center;
+  padding-bottom: 35px;
 }
-.impact-flip-wrap {
+.story-impact .impact-flip-wrap {
   width: 100%;
-  height: 480px;
+  height: 385px;
+  margin-top: 32px;
 }
-.impact-traditional {
+.story-impact .impact-traditional {
   height: 100%;
   background: var(--ivory);
   color: var(--navy);
-  padding: 32px 46px;
+  padding: 28px 38px;
   display: flex;
   flex-direction: column;
   align-items: flex-start;
 }
-.impact-traditional > svg {
+.story-impact .impact-traditional > svg {
   color: #917445;
-  margin-bottom: 14px;
+  margin-bottom: 12px;
+  flex-shrink: 0;
 }
-.impact-traditional > span {
-  font-size: 22px;
+.story-impact .impact-traditional > span {
+  font-size: 25px;
   color: #796b50;
 }
-.impact-traditional h2 {
-  font-size: 36px;
+.story-impact .impact-traditional h2 {
+  font-size: 33px;
   margin-top: 8px;
+  line-height: 1.45;
 }
-.impact-traditional p {
-  font-size: 24px;
-  margin-top: 12px;
+.story-impact .impact-traditional p {
+  font-size: 27px;
+  margin-top: 10px;
+  line-height: 1.5;
 }
-.impact-text-lines {
+.story-impact .impact-text-lines {
   display: flex;
   flex-direction: column;
-  gap: 12px;
+  gap: 11px;
   width: 100%;
-  margin-top: 22px;
+  margin-top: 19px;
 }
-.impact-text-lines i {
+.story-impact .impact-text-lines i {
   display: block;
   width: 100%;
   height: 2px;
   background: rgb(50 65 65 / 15%);
 }
-.impact-text-lines i:nth-child(2) {
+.story-impact .impact-text-lines i:nth-child(2) {
   width: 88%;
 }
-.impact-text-lines i:nth-child(3) {
-  width: 95%;
-}
-.impact-text-lines i:nth-child(5) {
+.story-impact .impact-text-lines i:nth-child(3) {
   width: 65%;
 }
-.impact-flip-caption {
+.story-impact .impact-flip-caption {
   display: flex;
   align-items: center;
-  gap: 26px;
-  font-size: 30px;
+  gap: 24px;
+  font-size: 32px;
   margin-top: 30px;
   color: var(--stone);
 }
-.impact-flip-caption svg {
+.story-impact .impact-flip-caption svg {
   color: var(--gold);
 }
-.impact-flip-caption strong {
+.story-impact .impact-flip-caption strong {
   color: var(--ivory);
   font-weight: 400;
 }
 
-/* Scene 12: official durations retained and the gold line follows steps. */
-.timeline-track {
+/* All four official phases and durations enter as one timeline. */
+.story-timeline .timeline-track {
   position: absolute;
-  top: 300px;
+  top: 279px;
   height: 2px;
-  inset-inline: 35px;
+  inset-inline: 42px;
 }
-.timeline-track-base,
-.timeline-track-gold {
+.story-timeline .timeline-track-base,
+.story-timeline .timeline-track-gold {
   position: absolute;
   inset: 0;
 }
-.timeline-track-base {
-  background: rgb(200 169 104 / 13%);
+.story-timeline .timeline-track-base {
+  background: rgb(200 169 104 / 15%);
 }
-.timeline-track-gold {
+.story-timeline .timeline-track-gold {
   background: var(--gold);
   transform-origin: right center;
   box-shadow: 0 0 24px rgb(200 169 104 / 20%);
 }
-.timeline-phases {
+.story-timeline .timeline-phases {
   display: grid;
   grid-template-columns: repeat(4, 1fr);
   gap: 24px;
   height: 100%;
 }
-.timeline-phase {
+.story-timeline .timeline-phase {
   position: relative;
   text-align: center;
 }
-.timeline-phase-top {
-  padding-top: 80px;
+.story-timeline .timeline-phase-top {
+  padding-top: 55px;
   display: flex;
   flex-direction: column;
   align-items: center;
-  gap: 31px;
+  gap: 28px;
 }
-.timeline-phase-top > svg {
+.story-timeline .timeline-phase-top > svg {
   color: var(--gold);
 }
-.timeline-point {
+.story-timeline .timeline-point {
   position: absolute;
-  top: 264px;
+  top: 243px;
   right: calc(50% - 36px);
   height: 73px;
   width: 73px;
   display: grid;
   place-items: center;
   border-radius: 50%;
-  border: 1px solid rgb(200 169 104 / 24%);
-  background: #07151f;
-  color: var(--text-muted);
-  font-size: 27px;
-  transition:
-    border-color 0.8s,
-    color 0.8s,
-    background 0.8s;
-}
-.timeline-phase.is-visible .timeline-point {
-  color: var(--navy);
-  border-color: var(--gold);
+  border: 1px solid var(--gold);
   background: var(--gold);
+  color: var(--navy);
+  font-size: 30px;
 }
-.timeline-phase-bottom {
+.story-timeline .timeline-phase-bottom {
   position: absolute;
-  top: 382px;
+  top: 369px;
   inset-inline: 23px;
 }
-.timeline-phase-bottom h2 {
+.story-timeline .timeline-phase-bottom h2 {
   color: var(--ivory);
-  font-size: 34px;
-  line-height: 1.6;
-  min-height: 110px;
+  font-size: 36px;
+  line-height: 1.5;
+  min-height: 166px;
 }
-.timeline-phase-bottom p {
+.story-timeline .timeline-phase-bottom p {
   color: var(--gold);
-  font-size: 27px;
+  font-size: 30px;
   margin-top: 22px;
+  line-height: 1.5;
 }
-.timeline-continuous {
+.story-timeline .timeline-continuous {
   position: absolute;
-  bottom: 2px;
+  bottom: 33px;
   right: 0;
   left: 0;
   display: flex;
   align-items: center;
   justify-content: center;
-  gap: 14px;
+  gap: 15px;
   color: var(--text-muted);
-  font-size: 23px;
+  font-size: 29px;
 }
-.timeline-continuous > span {
+.story-timeline .timeline-continuous > span {
   width: 7px;
   height: 7px;
   border-radius: 50%;
   background: var(--gold);
 }
 
-/* Scene 13: exact authorized figures, without invented allocations. */
-.budget-layout {
+/* Exact approved figures, without count-up delays or invented allocations. */
+.story-budget .budget-layout {
   display: grid;
-  grid-template-columns: 1.13fr 1fr;
-  gap: 65px;
+  grid-template-columns: 1.16fr 1fr;
+  gap: 62px;
   height: 100%;
-  padding: 26px 0 35px;
+  padding: 25px 0 36px;
 }
-.budget-founding {
-  border: 1px solid rgb(200 169 104 / 25%);
+.story-budget .budget-founding {
+  border: 1px solid rgb(200 169 104 / 28%);
   border-radius: 18px;
   background: linear-gradient(135deg, rgb(17 57 57 / 53%), rgb(9 28 37 / 60%));
   padding: 52px;
@@ -429,221 +441,250 @@
   flex-direction: column;
   justify-content: center;
 }
-.budget-founding > .story-eyebrow {
-  font-size: 29px;
+.story-budget .budget-founding > .story-eyebrow {
+  font-size: 36px;
 }
-.budget-amount {
+.story-budget .budget-amount {
   display: flex;
   align-items: baseline;
   gap: 19px;
   justify-content: flex-end;
-  margin-top: 18px;
-  font-size: 156px;
+  margin-top: 22px;
+  font-size: 165px;
   line-height: 1.2;
   color: var(--ivory);
   font-weight: 400;
+  font-variant-numeric: tabular-nums;
 }
-.budget-amount > span:last-child {
+.story-budget .budget-amount > span:last-child {
   color: var(--gold);
-  font-size: 61px;
+  font-size: 66px;
 }
-.budget-gold-rule {
-  width: 110px;
+.story-budget .budget-gold-rule {
+  width: 115px;
   height: 1px;
   background: var(--gold);
-  margin: 37px 0;
+  margin: 40px 0;
 }
-.budget-voluntary {
+.story-budget .budget-voluntary {
   display: flex;
   align-items: center;
-  gap: 19px;
+  gap: 20px;
 }
-.budget-voluntary > svg {
+.story-budget .budget-voluntary > svg {
   color: var(--gold);
   flex-shrink: 0;
 }
-.budget-voluntary p {
-  font-size: 27px;
-  line-height: 1.7;
+.story-budget .budget-voluntary p {
+  font-size: 32px;
+  line-height: 1.6;
   color: var(--ivory);
 }
-.budget-operating {
+.story-budget .budget-operating {
   display: flex;
   flex-direction: column;
-  padding-top: 26px;
+  justify-content: center;
 }
-.budget-monthly {
-  padding: 14px 0 30px;
-  border-bottom: 1px solid rgb(200 169 104 / 16%);
+.story-budget .budget-monthly {
+  padding: 14px 0 32px;
+  border-bottom: 1px solid rgb(200 169 104 / 18%);
 }
-.budget-monthly-amount {
+.story-budget .budget-monthly > .story-eyebrow {
+  font-size: 34px;
+}
+.story-budget .budget-monthly-amount {
   display: flex;
   align-items: baseline;
-  gap: 30px;
+  gap: 28px;
   margin-top: 18px;
   color: var(--ivory);
 }
-.budget-monthly-amount > span:first-child {
-  font-size: 38px;
+.story-budget .budget-monthly-amount > span:first-child {
+  font-size: 40px;
   color: var(--stone);
 }
-.budget-monthly-amount > span:last-child {
-  font-size: 92px;
+.story-budget .budget-monthly-amount > span:last-child {
+  font-size: 100px;
+  font-variant-numeric: tabular-nums;
 }
-.budget-services {
+.story-budget .budget-services {
   display: grid;
   grid-template-columns: 1fr 1fr;
-  gap: 18px;
-  padding-top: 33px;
+  gap: 20px;
+  padding-top: 35px;
 }
-.budget-services > div {
-  min-height: 134px;
-  position: relative;
-  padding: 20px 22px;
+.story-budget .budget-services > div {
+  min-height: 139px;
+  padding: 24px;
   display: flex;
   align-items: center;
-  gap: 17px;
-  border: 1px solid rgb(200 169 104 / 13%);
+  gap: 20px;
+  border: 1px solid rgb(200 169 104 / 17%);
   border-radius: 12px;
   background: rgb(12 35 40 / 44%);
 }
-.budget-services svg {
+.story-budget .budget-services svg {
   color: var(--gold);
   flex-shrink: 0;
 }
-.budget-services span {
+.story-budget .budget-services span {
   color: var(--ivory);
-  font-size: 28px;
-}
-.budget-services b {
-  position: absolute;
-  top: 11px;
-  left: 15px;
-  color: var(--text-muted);
-  font-size: 14px;
-  font-weight: 400;
-  opacity: 0.55;
+  font-size: 33px;
 }
 
-/* Scene 14: only the confirmed three names. */
-.team-connection {
+/* Confirmed names remain visible as one team. */
+.story-team .team-connection {
   display: flex;
   align-items: center;
   justify-content: center;
-  gap: 30px;
+  gap: 32px;
   color: var(--gold);
-  padding-top: 37px;
+  padding-top: 27px;
 }
-.team-connection > span {
-  width: 200px;
+.story-team .team-connection > span {
+  width: 230px;
   height: 1px;
-  background: linear-gradient(90deg, transparent, rgb(200 169 104 / 40%), transparent);
+  background: linear-gradient(90deg, transparent, rgb(200 169 104 / 45%), transparent);
 }
-.team-members {
+.story-team .team-members {
   display: grid;
   grid-template-columns: repeat(3, 1fr);
   gap: 36px;
-  margin-top: 54px;
+  margin-top: 42px;
 }
-.team-member {
+.story-team .team-member {
   position: relative;
-  min-height: 468px;
-  border: 1px solid rgb(200 169 104 / 17%);
+  min-height: 541px;
+  border: 1px solid rgb(200 169 104 / 22%);
   border-radius: 17px;
   background: linear-gradient(145deg, rgb(17 56 58 / 42%), rgb(8 27 35 / 75%));
-  padding: 65px 30px 40px;
+  padding: 79px 30px 44px;
   text-align: center;
 }
-.team-member-number {
+.story-team .team-member-number {
   position: absolute;
   top: 25px;
   right: 30px;
-  font-size: 19px;
+  font-size: 24px;
   color: var(--gold);
-  opacity: 0.6;
+  opacity: 0.65;
 }
-.team-monogram {
-  width: 175px;
-  height: 175px;
+.story-team .team-monogram {
+  width: 192px;
+  height: 192px;
   margin: 0 auto;
   display: grid;
   place-items: center;
   color: var(--gold);
-  font-size: 67px;
-  border: 1px solid rgb(200 169 104 / 27%);
+  font-size: 73px;
+  border: 1px solid rgb(200 169 104 / 30%);
   border-radius: 50%;
   background: rgb(9 29 36 / 80%);
 }
-.team-member-rule {
-  width: 40px;
+.story-team .team-member-rule {
+  width: 52px;
   height: 1px;
-  margin: 42px auto 28px;
+  margin: 44px auto 29px;
   background: var(--gold);
 }
-.team-member h2 {
-  font-size: 39px;
-  line-height: 1.55;
+.story-team .team-member h2 {
+  font-size: 44px;
+  line-height: 1.5;
   color: var(--ivory);
 }
 
-/* Scene 15: staged expansion, then the original logo and exact closing. */
+/* Expansion and the authentic closing identity share one final slide. */
 .story-vision {
   background: #061018;
 }
-.vision-atmosphere {
+.story-vision .vision-atmosphere {
   position: absolute;
   inset: 0;
   pointer-events: none;
-  background: radial-gradient(ellipse at 50% 63%, rgb(14 73 68 / 30%), transparent 67%);
+  background: radial-gradient(ellipse at 63% 60%, rgb(14 73 68 / 30%), transparent 67%);
 }
-.vision-content {
+.story-vision .vision-content {
   position: absolute;
   inset: 0;
 }
-.vision-heading {
+.story-vision .vision-heading {
   position: absolute;
-  top: 138px;
-  left: 150px;
-  right: 150px;
+  top: 66px;
+  left: 112px;
+  right: 112px;
   text-align: center;
 }
-.vision-heading h1 {
+.story-vision .vision-heading h1 {
   color: var(--ivory);
-  font-size: 65px;
-  line-height: 1.55;
+  font-size: 59px;
+  line-height: 1.5;
   font-weight: 400;
-  margin-top: 24px;
+  margin-top: 17px;
 }
-.vision-path {
+.story-vision .vision-closing {
   position: absolute;
-  top: 550px;
-  left: 140px;
-  right: 140px;
-  height: 350px;
+  top: 338px;
+  right: 124px;
+  width: 430px;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+}
+.story-vision .vision-logo {
+  flex-direction: column;
+  gap: 18px;
+}
+.story-vision .vision-logo .basira-mark__symbol {
+  width: 292px;
+  height: 292px;
+}
+.story-vision .vision-logo .basira-mark__word {
+  font-size: 76px;
+  line-height: 1.1;
+  padding-bottom: 0;
+}
+.story-vision .vision-closing-line {
+  height: 1px;
+  width: 180px;
+  background: linear-gradient(90deg, transparent, var(--gold), transparent);
+  margin: 30px 0 25px;
+}
+.story-vision .vision-closing > p {
+  color: var(--ivory);
+  font-size: 35px;
+  line-height: 1.55;
+  text-align: center;
+}
+.story-vision .vision-path {
+  position: absolute;
+  top: 452px;
+  left: 112px;
+  width: 1134px;
+  height: 340px;
   display: grid;
   grid-template-columns: repeat(5, 1fr);
-  gap: 25px;
+  gap: 14px;
 }
-.vision-path-base,
-.vision-path-line {
+.story-vision .vision-path-base,
+.story-vision .vision-path-line {
   position: absolute;
   top: 51px;
   height: 1px;
-  left: 135px;
-  right: 135px;
+  left: 105px;
+  right: 105px;
 }
-.vision-path-base {
-  background: rgb(200 169 104 / 14%);
+.story-vision .vision-path-base {
+  background: rgb(200 169 104 / 18%);
 }
-.vision-path-line {
+.story-vision .vision-path-line {
   background: var(--gold);
   transform-origin: right center;
 }
-.vision-stop {
+.story-vision .vision-stop {
   text-align: center;
   position: relative;
 }
-.vision-stop-icon {
+.story-vision .vision-stop-icon {
   height: 104px;
   width: 104px;
   margin: 0 auto;
@@ -654,48 +695,33 @@
   border: 1px solid rgb(200 169 104 / 52%);
   border-radius: 50%;
 }
-.vision-stop h2 {
-  font-size: 31px;
-  line-height: 1.5;
+.story-vision .vision-stop h2 {
+  font-size: 29px;
+  line-height: 1.45;
   color: var(--ivory);
-  margin-top: 39px;
-  min-height: 95px;
+  margin-top: 31px;
+  min-height: 91px;
 }
-.vision-stop p {
+.story-vision .vision-stop p {
   color: var(--text-muted);
-  font-size: 20px;
-  line-height: 1.5;
+  font-size: 21px;
+  line-height: 1.45;
 }
-.vision-closing {
-  position: absolute;
-  inset: 0;
-  display: flex;
-  flex-direction: column;
-  align-items: center;
-  justify-content: center;
-}
-.vision-logo {
-  flex-direction: column;
-  gap: 34px;
-}
-.vision-logo .basira-mark__symbol {
-  width: 305px;
-  height: 305px;
-}
-.vision-logo .basira-mark__word {
-  font-size: 125px;
-  line-height: 1.15;
-  padding-bottom: 0;
-  letter-spacing: -0.04em;
-}
-.vision-closing-line {
-  height: 1px;
-  width: 220px;
-  background: linear-gradient(90deg, transparent, var(--gold), transparent);
-  margin: 42px 0 34px;
-}
-.vision-closing > p {
-  color: var(--ivory);
-  font-size: 46px;
-  line-height: 1.7;
+
+@media (prefers-reduced-motion: reduce) {
+  :is(
+      .story-audience,
+      .story-prototype,
+      .story-impact,
+      .story-timeline,
+      .story-budget,
+      .story-team,
+      .story-vision
+    )
+    .story-enter {
+    animation: none;
+  }
+  .story-prototype .prototype-stop {
+    transition: none;
+  }
 }

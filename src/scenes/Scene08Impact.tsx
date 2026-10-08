@@ -7,146 +7,104 @@ import { uiAssets } from '../data/uiAssets';
 import type { SceneProps } from '../types/presentation';
 
 const teams = [
-  { label: 'الفريق الأزرق', name: 'فريق A', points: 320, progress: 72, className: 'blue' },
-  { label: 'الفريق الأحمر', name: 'فريق B', points: 280, progress: 64, className: 'red' },
+  { label: 'الفريق الأخضر', name: 'فريق A', points: 320, progress: 72, className: 'green' },
+  { label: 'الفريق الأزرق', name: 'فريق B', points: 280, progress: 64, className: 'blue' },
 ];
 const questions = ['من يصل إلى المعلم أولًا؟', 'من يجيب بشكل صحيح؟', 'من يجمع نقاطًا أكثر؟'];
 
-export function Scene08Impact({ currentStep, title, number }: SceneProps) {
+export function Scene08Impact({ title, number }: SceneProps) {
   const reducedMotion = useReducedMotion();
-  const duration = reducedMotion ? 0 : 0.6;
+
   return (
     <ProductScene
       title={title}
       number={number}
       subtitle="تعلّم، اكتشف، وتنافس مع فريقك داخل المحاكاة"
-      className="team-competition-scene"
+      className="basira-s08"
     >
-      <div className="team-competition-layout">
-        <div className="team-competition-visual">
-          <motion.div
-            className="product-screen team-competition-screen"
-            initial={{ opacity: 0, clipPath: 'inset(0 100% 0 0)' }}
-            animate={{ opacity: 1, clipPath: 'inset(0 0% 0 0)' }}
-            transition={{ duration: reducedMotion ? 0 : 0.85 }}
-          >
+      <div className="s08-layout">
+        <motion.figure
+          className="s08-main"
+          initial={reducedMotion ? false : { opacity: 0, y: 12 }}
+          animate={{ opacity: 1, y: 0 }}
+          transition={{ duration: reducedMotion ? 0 : 0.45 }}
+        >
+          <div className="product-screen s08-competition-screen">
             <UiImage asset={uiAssets.competition} fit="contain" />
-          </motion.div>
-          <div className="product-caption team-competition-caption">
-            <Users size={23} strokeWidth={1.5} aria-hidden="true" />
-            فريقان، رحلة واحدة، وتحديات مشتركة
           </div>
-          <motion.div
-            className="team-challenge-tags"
-            initial={false}
-            animate={{ opacity: currentStep >= 3 ? 1 : 0, y: currentStep >= 3 ? 0 : 20 }}
-            transition={{ duration }}
-            aria-hidden={currentStep < 3}
-          >
-            <span>
-              <MapPin size={22} aria-hidden="true" />
-              الوصول إلى المعلم
-            </span>
-            <span>
-              <Target size={22} aria-hidden="true" />
-              إجابة صحيحة
-            </span>
-            <span>
-              <Flag size={22} aria-hidden="true" />
-              إكمال التحدي
-            </span>
-          </motion.div>
-        </div>
-        <aside className="team-competition-aside">
-          <motion.div
-            className="team-scoreboard"
-            initial={false}
-            animate={{ opacity: currentStep >= 1 ? 1 : 0, y: currentStep >= 1 ? 0 : 20 }}
-            transition={{ duration }}
-            aria-hidden={currentStep < 1}
-          >
-            {teams.map((team) => (
-              <div key={team.name} className={`team-score-card team-score-card--${team.className}`}>
-                <h3>{team.label}</h3>
-                <span className="team-short-name">{team.name}</span>
-                <Counter
-                  value={team.points}
-                  visible={currentStep >= 1}
-                  locale="en"
-                  duration={1.25}
-                />
-                <div className="competition-members">
-                  <Users size={19} aria-hidden="true" />
-                  <span>٤ أعضاء</span>
-                  <div aria-hidden="true">
-                    {[1, 2, 3, 4].map((member) => (
-                      <i key={member} />
-                    ))}
-                  </div>
-                </div>
-              </div>
-            ))}
-            <span className="team-versus" aria-label="ضد">
-              VS
-            </span>
-          </motion.div>
-          <motion.div
-            className="team-live-task"
-            initial={false}
-            animate={{ opacity: currentStep >= 2 ? 1 : 0, y: currentStep >= 2 ? 0 : 15 }}
-            transition={{ duration }}
-            aria-hidden={currentStep < 2}
-          >
-            <div className="team-clock">
-              <Clock3 size={23} aria-hidden="true" />
-              <span>08:24</span>
-              <small>الوقت المتبقي</small>
-            </div>
-            <div className="team-task">
-              <small>المهمة الحالية</small>
-              <p>اكتشف المسجد القبلي</p>
-              <span>مثال تنافسي داخل المحاكاة</span>
-            </div>
-          </motion.div>
-          <motion.div
-            className="team-progress-panel"
-            initial={false}
-            animate={{ opacity: currentStep >= 3 ? 1 : 0 }}
-            transition={{ duration }}
-            aria-hidden={currentStep < 3}
-          >
+          <figcaption>
+            <Users size={22} strokeWidth={1.5} aria-hidden="true" />
+            فريقان، رحلة واحدة، وتحديات مشتركة
+          </figcaption>
+        </motion.figure>
+        <motion.aside
+          className="s08-aside"
+          initial={reducedMotion ? false : { opacity: 0, y: 12 }}
+          animate={{ opacity: 1, y: 0 }}
+          transition={{ duration: reducedMotion ? 0 : 0.45, delay: reducedMotion ? 0 : 0.12 }}
+        >
+          <div className="s08-scoreboard">
             {teams.map((team) => (
               <div
                 key={team.name}
-                className={`team-progress-row team-progress-row--${team.className}`}
+                className={['s08-team', 's08-team--' + team.className].join(' ')}
+              >
+                <h3>{team.label}</h3>
+                <span>{team.name}</span>
+                <Counter value={team.points} visible locale="en" duration={0.5} />
+                <p>
+                  <Users size={18} aria-hidden="true" />٤ أعضاء
+                </p>
+              </div>
+            ))}
+          </div>
+          <div className="s08-clock">
+            <Clock3 size={24} aria-hidden="true" />
+            <strong>08:24</strong>
+            <span>الوقت المتبقي</span>
+          </div>
+          <div className="s08-task">
+            <small>المهمة الحالية</small>
+            <p>اعثر على سبيل قايتباي</p>
+          </div>
+          <div className="s08-progress">
+            {teams.map((team) => (
+              <div
+                key={team.name}
+                className={['s08-progress-row', 's08-progress-row--' + team.className].join(' ')}
               >
                 <span>{team.name}</span>
                 <div>
-                  <motion.i
-                    initial={false}
-                    animate={{ width: currentStep >= 3 ? `${team.progress}%` : '0%' }}
-                    transition={{ duration: reducedMotion ? 0 : 1.1 }}
-                  />
+                  <i style={{ width: team.progress + '%' }} />
                 </div>
                 <small>{team.progress}%</small>
               </div>
             ))}
-          </motion.div>
-          <div className="team-questions">
-            {questions.map((question, index) => (
-              <motion.p
-                key={question}
-                initial={false}
-                animate={{ opacity: currentStep >= 4 ? 1 : 0, x: currentStep >= 4 ? 0 : -20 }}
-                transition={{ duration, delay: reducedMotion ? 0 : index * 0.12 }}
-                aria-hidden={currentStep < 4}
-              >
-                <span>{String(index + 1).padStart(2, '0')}</span>
-                {question}
-              </motion.p>
-            ))}
           </div>
-        </aside>
+          <div className="s08-challenges">
+            <span>
+              <MapPin size={18} aria-hidden="true" />
+              الوصول إلى المعلم
+            </span>
+            <span>
+              <Target size={18} aria-hidden="true" />
+              إجابة صحيحة
+            </span>
+            <span>
+              <Flag size={18} aria-hidden="true" />
+              إكمال التحدي
+            </span>
+          </div>
+          <ol className="s08-questions">
+            {questions.map((question, index) => (
+              <li key={question}>
+                <small>{String(index + 1).padStart(2, '0')}</small>
+                {question}
+              </li>
+            ))}
+          </ol>
+          <small className="s08-example">مثال تنافسي داخل المحاكاة</small>
+        </motion.aside>
       </div>
     </ProductScene>
   );

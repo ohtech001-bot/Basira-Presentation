@@ -7,10 +7,11 @@ export interface PageFlipProps {
   back: ReactNode;
   flipped: boolean;
   className?: string;
+  duration?: number;
 }
 
 /** A controlled RTL two-face page: no dependency on pointer gestures or canvas. */
-export function PageFlip({ front, back, flipped, className }: PageFlipProps) {
+export function PageFlip({ front, back, flipped, className, duration = 0.6 }: PageFlipProps) {
   const reduceMotion = useReducedMotion();
   return (
     <div className={clsx('page-flip', { 'page-flip--turned': flipped }, className)} dir="rtl">
@@ -18,7 +19,7 @@ export function PageFlip({ front, back, flipped, className }: PageFlipProps) {
         className="page-flip__leaf"
         initial={false}
         animate={{ rotateY: flipped ? -180 : 0 }}
-        transition={{ duration: reduceMotion ? 0 : 1.15, ease: [0.45, 0, 0.15, 1] }}
+        transition={{ duration: reduceMotion ? 0 : duration, ease: [0.45, 0, 0.15, 1] }}
       >
         <div
           className="page-flip__face page-flip__face--front"

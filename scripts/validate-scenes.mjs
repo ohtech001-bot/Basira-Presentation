@@ -17,11 +17,28 @@ try {
   const { uiAssets } = await server.ssrLoadModule('/src/data/uiAssets.ts');
   const usedAssets = new Set();
   let checkedSteps = 0;
+  const requiredText = {
+    1: ['هل تعرف', 'هذا المعلم؟', 'وهل تعرف أين يقع'],
+    2: ['سبيل قايتباي', 'معرفة محدودة بالمعالم', 'معلومات متفرقة وغير تفاعلية'],
+    3: ['بصيرة', 'منظومة تفاعلية للتعريف بالمسجد الأقصى المبارك', 'نريده أن يدخله ويكتشفه'],
+    8: ['المسابقة الجماعية', '320', '280'],
+    11: ['الأهداف'],
+    13: ['6,000', '300', 'العمل تطوعي'],
+    14: ['محمد وجيه عمري', 'فيصل عدنان عمري', 'مجد مصالحة'],
+    15: [
+      'Interactive Simulation',
+      'Schools',
+      'Multiple Languages',
+      'VR',
+      'Global Access',
+      'شاهد المكان، اكتشف معالمه، واعرف قصته.',
+    ],
+  };
   assert.equal(scenes.length, 15);
   assert.equal(new Set(scenes.map(({ id }) => id)).size, 15);
   const results = [];
   for (const scene of scenes) {
-    assert.ok(scene.totalSteps >= 1);
+    assert.equal(scene.totalSteps, 1, `Slide ${scene.number} still requires extra clicks`);
     for (let step = 0; step < scene.totalSteps; step++) {
       const markup = renderToStaticMarkup(
         createElement(scene.component, {
@@ -41,6 +58,12 @@ try {
         !markup.includes('الهيكل جاهز لإضافة المحتوى'),
         `Scene ${scene.number} still uses a scaffold`,
       );
+      for (const text of requiredText[scene.number] ?? []) {
+        assert.ok(
+          markup.includes(text),
+          `Missing first-entry content on slide ${scene.number}: ${text}`,
+        );
+      }
       if (scene.number === 1)
         assert.ok(!markup.includes('سبيل قايتباي'), 'Opening reveals the answer');
       if (scene.number === 8 && step === scene.totalSteps - 1) {
@@ -51,7 +74,7 @@ try {
         if (markup.includes(asset.src)) {
           usedAssets.add(asset.id);
           assert.ok(
-            fs.existsSync(path.join(process.cwd(), 'public', 'assets', 'ui', asset.sourceFile)),
+            fs.existsSync(path.join(process.cwd(), 'public', 'assets', 'ui', asset.servedFile)),
           );
         }
       }
@@ -59,10 +82,21 @@ try {
     }
     results.push({ number: scene.number, title: scene.title, steps: scene.totalSteps });
   }
-  for (const asset of Object.values(uiAssets))
-    assert.ok(usedAssets.has(asset.id), `Unused supplied image: ${asset.sourceFile}`);
+  const unusedAssets = Object.values(uiAssets)
+    .filter((asset) => !usedAssets.has(asset.id))
+    .map((asset) => asset.id);
   console.log(
-    JSON.stringify({ scenes: results, checkedSteps, usedAssetCount: usedAssets.size }, null, 2),
+    JSON.stringify(
+      {
+        scenes: results,
+        checkedSteps,
+        requiredNextClicks: scenes.length - 1,
+        usedAssetCount: usedAssets.size,
+        unusedAssets,
+      },
+      null,
+      2,
+    ),
   );
 } finally {
   await server.close();

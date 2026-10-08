@@ -1,103 +1,59 @@
 import { motion, useReducedMotion } from 'framer-motion';
-import { MapPin, Route } from 'lucide-react';
+import { MapPin } from 'lucide-react';
 import { ProductScene } from '../components/presentation/ProductScene';
 import { UiImage } from '../components/ui/UiImage';
 import { uiAssets } from '../data/uiAssets';
 import type { SceneProps } from '../types/presentation';
 
-// Positions follow the labels already visible in the supplied aerial interface.
-const landmarks = [
-  { label: 'قبة الصخرة', x: 40.4, y: 43.6 },
-  { label: 'المسجد القبلي', x: 25.1, y: 65.9 },
-  { label: 'المصلى المرواني', x: 58.9, y: 68.4 },
-  { label: 'باب الرحمة', x: 65.2, y: 32.7 },
-];
+const landmarks = ['قبة الصخرة', 'المسجد القبلي', 'المصلى المرواني', 'باب الرحمة', 'سبيل قايتباي'];
 
-export function Scene06Audience({ currentStep, title, number }: SceneProps) {
+export function Scene06Audience({ title, number }: SceneProps) {
   const reducedMotion = useReducedMotion();
+
   return (
     <ProductScene
       title={title}
       number={number}
       subtitle="تعرّف إلى المعالم… واربطها بالمكان"
-      className="aerial-map-scene"
+      className="basira-s06"
     >
-      <div className="aerial-map-layout">
-        <div className="product-screen aerial-map-screen">
-          <div className="aerial-map-layer">
+      <div className="s06-layout">
+        <motion.figure
+          className="s06-map"
+          initial={reducedMotion ? false : { opacity: 0, y: 12 }}
+          animate={{ opacity: 1, y: 0 }}
+          transition={{ duration: reducedMotion ? 0 : 0.45 }}
+        >
+          <div className="product-screen s06-map-screen">
+            {/* The supplied image includes its own labels; do not invent geographic pins. */}
             <UiImage asset={uiAssets.map} fit="contain" />
-            <svg
-              className="aerial-route"
-              viewBox="0 0 100 100"
-              preserveAspectRatio="none"
-              aria-hidden="true"
-            >
-              <motion.path
-                d="M25.1 65.9 Q29 44 40.4 43.6 T65.2 32.7"
-                initial={false}
-                animate={{
-                  pathLength: currentStep >= 2 ? 1 : 0,
-                  opacity: currentStep >= 2 ? 1 : 0,
-                }}
-                transition={{ duration: reducedMotion ? 0 : 1.4, ease: 'easeInOut' }}
-              />
-            </svg>
-            {landmarks.map(({ label, x, y }, index) => (
-              <motion.div
-                key={label}
-                className="aerial-landmark"
-                style={{ left: `${x}%`, top: `${y}%` }}
-                initial={false}
-                animate={{ opacity: currentStep >= 1 ? 1 : 0, y: currentStep >= 1 ? 0 : 12 }}
-                transition={{
-                  duration: reducedMotion ? 0 : 0.5,
-                  delay: reducedMotion ? 0 : index * 0.1,
-                }}
-                aria-hidden={currentStep < 1}
-              >
-                <span className="aerial-landmark-dot" />
-                <span className="aerial-landmark-label">{label}</span>
-              </motion.div>
-            ))}
-            <motion.div
-              className="aerial-route-label"
-              initial={false}
-              animate={{ opacity: currentStep >= 2 ? 1 : 0 }}
-              aria-hidden={currentStep < 2}
-            >
-              <Route size={19} aria-hidden="true" />
-              مسار استكشاف توضيحي
-            </motion.div>
           </div>
-        </div>
-        <aside className="aerial-map-aside">
-          <span className="product-aside-label">من المشهد الجوي إلى تفاصيل المعلم</span>
+          <figcaption>خريطة المنظومة كما تظهر داخل تجربة بصيرة</figcaption>
+        </motion.figure>
+        <motion.aside
+          className="s06-aside"
+          initial={reducedMotion ? false : { opacity: 0, y: 12 }}
+          animate={{ opacity: 1, y: 0 }}
+          transition={{ duration: reducedMotion ? 0 : 0.45, delay: reducedMotion ? 0 : 0.12 }}
+        >
           <h2>
-            كل معلم
-            <br />
-            <em>له مكان وقصة.</em>
+            كل معلم له <em>مكان وقصة.</em>
           </h2>
-          <motion.div
-            className="qaytbay-map-card"
-            initial={false}
-            animate={{ opacity: currentStep >= 3 ? 1 : 0, y: currentStep >= 3 ? 0 : 25 }}
-            transition={{ duration: reducedMotion ? 0 : 0.7 }}
-            aria-hidden={currentStep < 3}
-          >
-            {currentStep >= 3 && (
-              <div className="qaytbay-map-photo">
-                <UiImage asset={uiAssets.qaytbay} fit="contain" />
-              </div>
-            )}
-            <div className="qaytbay-map-caption">
-              <MapPin size={24} strokeWidth={1.5} aria-hidden="true" />
-              <div>
-                <h3>سبيل قايتباي</h3>
-                <p>تبدأ المعرفة بالتعرّف إلى المعلم</p>
-              </div>
+          <ul className="s06-landmarks">
+            {landmarks.map((landmark) => (
+              <li key={landmark}>
+                <MapPin size={20} strokeWidth={1.5} aria-hidden="true" />
+                {landmark}
+              </li>
+            ))}
+          </ul>
+          <figure className="s06-photo">
+            <div>
+              <UiImage asset={uiAssets.mission} fit="contain" />
             </div>
-          </motion.div>
-        </aside>
+            <figcaption>المهمة الحالية: سبيل قايتباي</figcaption>
+          </figure>
+        </motion.aside>
       </div>
     </ProductScene>
   );

@@ -13,45 +13,38 @@ const future = [
   { english: 'Global Access', arabic: 'وصول عالمي', icon: Globe2 },
 ];
 
-export function Scene15Vision({ currentStep, title }: SceneProps) {
+export function Scene15Vision({ title }: SceneProps) {
   const reduceMotion = useReducedMotion();
-  const closing = currentStep >= 6;
   return (
     <SceneFrame label={title} className="story-vision">
       <div className="vision-atmosphere" aria-hidden="true" />
-      <motion.div
-        className="vision-content"
-        initial={false}
-        animate={{ opacity: closing ? 0 : 1, y: reduceMotion ? 0 : closing ? -35 : 0 }}
-        transition={{ duration: reduceMotion ? 0 : 0.7 }}
-        aria-hidden={closing}
-        inert={closing}
-      >
+      <div className="vision-content story-enter">
         <header className="vision-heading">
           <span className="story-eyebrow">الرؤية المستقبلية</span>
-          <h1>
+          <h1 aria-label="نحو منصة رقمية تعليمية متكاملة للتعريف بالمسجد الأقصى المبارك.">
             نحو منصة رقمية تعليمية متكاملة
             <br />
             للتعريف بالمسجد الأقصى المبارك.
           </h1>
         </header>
+        <CinematicReveal visible className="vision-closing">
+          <BasiraMark className="vision-logo" />
+          <div className="vision-closing-line" />
+          <p>شاهد المكان، اكتشف معالمه، واعرف قصته.</p>
+        </CinematicReveal>
         <div className="vision-path">
           <div className="vision-path-base" aria-hidden="true" />
           <motion.div
             className="vision-path-line"
-            initial={false}
-            animate={{ scaleX: Math.min(1, currentStep / 5) }}
-            transition={{ duration: reduceMotion ? 0 : 1, ease: [0.22, 1, 0.36, 1] }}
+            initial={{ scaleX: reduceMotion ? 1 : 0 }}
+            animate={{ scaleX: 1 }}
+            transition={{ duration: reduceMotion ? 0 : 0.6 }}
             aria-hidden="true"
           />
-          {future.map(({ english, arabic, icon: Icon }, index) => (
-            <CinematicReveal
-              key={english}
-              visible={currentStep >= index + 1}
-              className="vision-stop"
-            >
+          {future.map(({ english, arabic, icon: Icon }) => (
+            <CinematicReveal key={english} visible className="vision-stop">
               <span className="vision-stop-icon">
-                <Icon size={46} strokeWidth={1.1} />
+                <Icon size={43} strokeWidth={1.1} />
               </span>
               <h2>{arabic}</h2>
               <p lang="en" dir="ltr">
@@ -60,12 +53,7 @@ export function Scene15Vision({ currentStep, title }: SceneProps) {
             </CinematicReveal>
           ))}
         </div>
-      </motion.div>
-      <CinematicReveal visible={closing} className="vision-closing">
-        <BasiraMark className="vision-logo" />
-        <div className="vision-closing-line" />
-        <p>شاهد المكان، اكتشف معالمه، واعرف قصته.</p>
-      </CinematicReveal>
+      </div>
     </SceneFrame>
   );
 }

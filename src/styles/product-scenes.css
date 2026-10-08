@@ -1,561 +1,461 @@
-/* Product scenes 4–8: staged actual interface imagery, on the shared 1920×1080 stage. */
-.product-aside-label {
-  display: block;
-  color: var(--gold);
-  font-size: 22px;
-  line-height: 1.7;
+/* Slides 4–8: complete slides, with the supplied interfaces as the main visual. */
+.basira-s04 figure,
+.basira-s05 figure,
+.basira-s06 figure,
+.basira-s07 figure,
+.basira-s08 figure {
+  margin: 0;
+  min-width: 0;
 }
-.journey-layout {
-  display: grid;
-  grid-template-columns: 1240px 420px;
-  gap: 40px;
-  height: 100%;
-}
-.journey-screen {
-  width: 1240px;
-  height: 674px;
-}
-.journey-image {
-  position: absolute;
-  inset: 9px;
-}
-.journey-caption {
-  margin-top: 17px;
-}
-.journey-caption small {
-  color: var(--text-muted);
-  font-size: 19px;
-  margin-right: auto;
-}
-.journey-flow {
-  padding: 16px 14px 0 0;
-}
-.journey-steps {
-  list-style: none;
-  padding: 0;
-  margin: 25px 0 0;
-}
-.journey-steps li {
+.basira-s04 figcaption,
+.basira-s05 figcaption,
+.basira-s06 figcaption,
+.basira-s07 figcaption,
+.basira-s08 figcaption {
   display: flex;
   align-items: center;
-  gap: 20px;
-  position: relative;
-  height: 82px;
+  gap: 13px;
   color: var(--stone);
-  font-size: 27px;
+  line-height: 1.5;
 }
-.journey-steps li:not(:last-child)::after {
+.basira-s04 .product-screen,
+.basira-s05 .product-screen,
+.basira-s06 .product-screen,
+.basira-s07 .product-screen,
+.basira-s08 .product-screen {
+  border-color: rgb(200 169 104 / 34%);
+  border-radius: 12px;
+}
+
+/* Simulation journey: one large screen, two previews, one continuous route. */
+.basira-s04 .s04-gallery {
+  display: grid;
+  grid-template-columns: 1232px 472px;
+  gap: 24px;
+  height: 696px;
+}
+.basira-s04 .s04-main-screen {
+  height: 656px;
+}
+.basira-s04 .s04-main figcaption {
+  margin-top: 10px;
+  height: 30px;
+  font-size: 25px;
+}
+.basira-s04 .s04-main figcaption::before {
+  content: '';
+  width: 30px;
+  height: 1px;
+  background: var(--gold);
+}
+.basira-s04 .s04-supporting {
+  display: grid;
+  grid-template-rows: 1fr 1fr;
+  gap: 18px;
+}
+.basira-s04 .s04-support-screen {
+  height: 294px;
+}
+.basira-s04 .s04-supporting figcaption {
+  margin-top: 8px;
+  font-size: 23px;
+  height: 34px;
+}
+.basira-s04 .s04-flow {
+  display: grid;
+  grid-template-columns: repeat(7, 1fr);
+  list-style: none;
+  margin: 18px 0 0;
+  padding: 0;
+  height: 76px;
+  border-top: 1px solid rgb(200 169 104 / 30%);
+}
+.basira-s04 .s04-flow li {
+  position: relative;
+  display: flex;
+  align-items: center;
+  gap: 11px;
+  font-size: 21px;
+  color: var(--ivory);
+  padding-top: 8px;
+}
+.basira-s04 .s04-flow li:not(:last-child)::after {
   content: '';
   position: absolute;
-  right: 23px;
-  top: 66px;
-  width: 1px;
-  height: 31px;
-  background: linear-gradient(var(--gold), rgb(200 169 104 / 15%));
+  left: 18px;
+  top: -4px;
+  width: 7px;
+  height: 7px;
+  background: var(--gold);
+  transform: rotate(45deg);
 }
-.journey-node {
+.basira-s04 .s04-node {
   flex-shrink: 0;
   display: grid;
   place-items: center;
-  width: 48px;
-  height: 48px;
+  gap: 2px;
   color: var(--gold);
-  border: 1px solid rgb(200 169 104 / 30%);
-  border-radius: 50%;
-  background: #0b2228;
+  min-width: 31px;
 }
-.journey-steps li.is-current {
-  color: var(--ivory);
-}
-.journey-steps li.is-current .journey-node {
-  border-color: var(--gold);
-  background: #173a38;
-  box-shadow: 0 0 32px rgb(28 90 74 / 30%);
-}
-.journey-steps li small {
-  color: var(--gold);
-  opacity: 0.6;
-  font-size: 17px;
-  margin-right: auto;
+.basira-s04 .s04-node small {
+  font-size: 11px;
+  line-height: 1;
+  opacity: 0.65;
 }
 
-.landmark-showcase-layout {
+/* Landmark story: a generous main interface and three supporting views. */
+.basira-s05 .s05-layout {
   display: grid;
-  grid-template-columns: 1230px 430px;
-  gap: 40px;
+  grid-template-columns: 1280px 424px;
+  gap: 24px;
   height: 100%;
 }
-.landmark-showcase-hero {
-  height: 666px;
-  width: 100%;
+.basira-s05 .s05-hero-screen {
+  height: 724px;
 }
-.landmark-showcase-image {
-  position: absolute;
-  inset: 9px;
+.basira-s05 .s05-hero figcaption {
+  margin-top: 14px;
+  height: 42px;
+  justify-content: space-between;
+  font-size: 23px;
 }
-.landmark-showcase-caption {
-  margin-top: 19px;
+.basira-s05 .s05-hero strong {
+  color: var(--gold);
+  font-size: 31px;
+  font-weight: 500;
 }
-.landmark-showcase-caption small {
-  color: var(--text-muted);
-  font-size: 19px;
-  margin-right: auto;
-}
-.landmark-supporting {
+.basira-s05 .s05-supporting {
   display: grid;
-  grid-template-rows: repeat(3, 218px);
+  grid-template-rows: repeat(3, 244px);
   gap: 16px;
 }
-.landmark-support-card {
-  margin: 0;
-  border: 1px solid rgb(200 169 104 / 24%);
-  border-radius: 10px;
-  overflow: hidden;
-  background: #091a21;
+.basira-s05 .s05-support-screen {
+  height: 208px;
 }
-.landmark-support-image {
-  height: 175px;
-  background: #03080d;
-}
-.landmark-support-card figcaption {
-  height: 42px;
-  display: flex;
-  align-items: center;
-  gap: 12px;
-  padding: 0 16px;
-  color: var(--ivory);
-  font-size: 20px;
-}
-.landmark-support-card figcaption svg {
-  color: var(--gold);
+.basira-s05 .s05-supporting figcaption {
+  height: 36px;
+  font-size: 21px;
 }
 
-.aerial-map-layout {
+/* Map: preserve the supplied image and its labels; place no invented pins. */
+.basira-s06 .s06-layout {
   display: grid;
-  grid-template-columns: 1240px 420px;
-  gap: 40px;
+  grid-template-columns: 1360px 344px;
+  gap: 24px;
   height: 100%;
 }
-.aerial-map-screen {
-  width: 1240px;
-  height: 709px;
+.basira-s06 .s06-map-screen {
+  height: 750px;
 }
-.aerial-map-layer {
-  position: relative;
-  width: 100%;
-  aspect-ratio: 1672 / 941;
+.basira-s06 .s06-map figcaption {
+  margin-top: 10px;
+  font-size: 23px;
+  height: 30px;
 }
-.aerial-map-layer > .ui-image {
-  position: absolute;
-  inset: 0;
+.basira-s06 .s06-aside {
+  padding: 4px 3px;
 }
-.aerial-route {
-  position: absolute;
-  inset: 0;
-  width: 100%;
-  height: 100%;
-  overflow: visible;
-}
-.aerial-route path {
-  fill: none;
-  stroke: #ebcd86;
-  stroke-width: 0.38;
-  stroke-linecap: round;
-  stroke-dasharray: 1.1 0.6;
-  filter: drop-shadow(0 0 1px #062029);
-}
-.aerial-landmark {
-  position: absolute;
-  display: flex;
-  align-items: center;
-  gap: 8px;
-  direction: ltr;
-  translate: -11px -50%;
-}
-.aerial-landmark-dot {
-  flex-shrink: 0;
-  width: 21px;
-  height: 21px;
-  border: 3px solid #fff0c7;
-  border-radius: 50%;
-  background: #123f43;
-  box-shadow: 0 0 0 6px rgb(234 205 134 / 18%);
-}
-.aerial-landmark-label {
-  direction: rtl;
-  background: rgb(5 26 35 / 94%);
-  color: var(--ivory);
-  font-size: 19px;
-  padding: 7px 13px;
-  border: 1px solid rgb(200 169 104 / 75%);
-  border-radius: 7px;
-  white-space: nowrap;
-  box-shadow: 0 5px 14px rgb(0 0 0 / 25%);
-}
-.aerial-route-label {
-  position: absolute;
-  bottom: 72px;
-  left: 18px;
-  display: flex;
-  align-items: center;
-  gap: 9px;
-  padding: 8px 12px;
-  background: rgb(5 26 35 / 92%);
-  color: var(--gold);
-  font-size: 17px;
-  border-radius: 6px;
-}
-.aerial-map-aside {
-  padding-top: 7px;
-}
-.aerial-map-aside h2 {
-  font-size: 47px;
+.basira-s06 .s06-aside h2 {
+  font-size: 31px;
   font-weight: 500;
-  line-height: 1.55;
-  margin-top: 15px;
+  line-height: 1.65;
 }
-.aerial-map-aside h2 em {
-  color: var(--gold);
+.basira-s06 .s06-aside h2 em {
   font-style: normal;
-}
-.qaytbay-map-card {
-  margin-top: 24px;
-  border: 1px solid rgb(200 169 104 / 25%);
-  border-radius: 11px;
-  background: #0b1d24;
-  overflow: hidden;
-}
-.qaytbay-map-photo {
-  height: 356px;
-  padding: 8px;
-  background: #040d13;
-}
-.qaytbay-map-caption {
-  display: flex;
-  align-items: flex-start;
-  gap: 15px;
-  padding: 18px 21px;
-}
-.qaytbay-map-caption svg {
   color: var(--gold);
-  margin-top: 6px;
 }
-.qaytbay-map-caption h3 {
-  font-size: 30px;
-  font-weight: 500;
-}
-.qaytbay-map-caption p {
-  font-size: 18px;
-  line-height: 1.7;
-  color: var(--text-muted);
-  margin-top: 4px;
-}
-
-.learning-challenge-layout {
+.basira-s06 .s06-landmarks {
   display: grid;
-  grid-template-columns: 1190px 470px;
-  gap: 40px;
-  height: 100%;
-}
-.learning-challenge-screen {
-  height: 667px;
-}
-.learning-challenge-image {
-  position: absolute;
-  inset: 9px;
-}
-.learning-challenge-caption {
-  margin-top: 17px;
-}
-.learning-challenge-caption small {
-  color: var(--text-muted);
-  font-size: 18px;
-  margin-right: auto;
-}
-.learning-challenge-aside {
-  padding-top: 7px;
-}
-.learning-milestones {
+  gap: 6px;
   list-style: none;
   padding: 0;
-  margin: 0;
+  margin: 20px 0 24px;
 }
-.learning-milestones li {
-  height: 85px;
+.basira-s06 .s06-landmarks li {
   display: flex;
   align-items: center;
-  gap: 21px;
-  margin-bottom: 3px;
-  padding: 6px 18px;
-  border-right: 1px solid rgb(200 169 104 / 25%);
-}
-.learning-milestones li.is-current {
-  background: linear-gradient(270deg, rgb(19 66 62 / 70%), transparent);
-  border-right-color: var(--gold);
-}
-.learning-milestones li > svg {
-  color: var(--gold);
-  flex-shrink: 0;
-}
-.learning-milestones h3 {
-  font-size: 29px;
-  color: var(--ivory);
-  font-weight: 500;
-}
-.learning-milestones p {
-  font-size: 19px;
-  color: var(--text-muted);
-  margin-top: 1px;
-}
-.learning-points {
-  margin-top: 25px;
-  display: grid;
-  grid-template-columns: 50px 160px 1fr;
-  align-items: center;
-  gap: 12px;
-  padding: 15px 18px;
-  min-height: 117px;
-  border-top: 1px solid rgb(200 169 104 / 25%);
-  border-bottom: 1px solid rgb(200 169 104 / 25%);
-}
-.learning-points > svg {
-  color: var(--gold);
-}
-.learning-points .number-counter {
-  color: var(--gold);
-  font-size: 81px;
-  font-weight: 400;
-  line-height: 1;
-  direction: ltr;
-}
-.learning-points > span:last-child {
-  font-size: 24px;
-  line-height: 1.7;
+  gap: 14px;
+  font-size: 25px;
+  height: 40px;
   color: var(--stone);
 }
-.learning-achievement {
-  display: flex;
-  align-items: center;
-  gap: 12px;
-  font-size: 21px;
-  line-height: 1.8;
+.basira-s06 .s06-landmarks svg {
   color: var(--gold);
-  margin-top: 23px;
+}
+.basira-s06 .s06-photo {
+  border-top: 1px solid rgb(200 169 104 / 25%);
+  padding-top: 18px;
+}
+.basira-s06 .s06-photo > div {
+  height: 210px;
+  overflow: hidden;
+  border: 1px solid rgb(200 169 104 / 30%);
+  border-radius: 8px;
+}
+.basira-s06 .s06-photo figcaption {
+  height: 45px;
+  font-size: 21px;
+  color: var(--gold);
 }
 
-.team-competition-layout {
+/* Learning: quiz, profile, and progress are visible together. */
+.basira-s07 .s07-layout {
   display: grid;
-  grid-template-columns: 1150px 510px;
-  gap: 40px;
+  grid-template-columns: 1280px 424px;
+  gap: 24px;
   height: 100%;
 }
-.team-competition-screen {
-  height: 600px;
+.basira-s07 .s07-quiz-screen {
+  height: 704px;
 }
-.team-competition-caption {
-  margin-top: 15px;
-  font-size: 22px;
-}
-.team-competition-caption > svg {
-  color: var(--gold);
-}
-.team-challenge-tags {
-  display: flex;
-  gap: 14px;
-  margin-top: 19px;
-}
-.team-challenge-tags span {
-  display: flex;
-  align-items: center;
-  gap: 10px;
-  padding: 8px 18px;
-  border: 1px solid rgb(200 169 104 / 23%);
-  border-radius: 40px;
-  font-size: 19px;
-  color: var(--stone);
-  background: rgb(11 34 40 / 70%);
-}
-.team-challenge-tags svg {
-  color: var(--gold);
-}
-.team-competition-aside {
-  display: flex;
-  flex-direction: column;
-  gap: 12px;
-}
-.team-scoreboard {
+.basira-s07 .s07-milestones {
   display: grid;
-  grid-template-columns: 1fr 1fr;
-  gap: 18px;
+  grid-template-columns: repeat(5, 1fr);
+  height: 66px;
+  margin: 20px 0 0;
+  padding: 0;
+  list-style: none;
+  border-top: 1px solid rgb(200 169 104 / 30%);
+}
+.basira-s07 .s07-milestones li {
   position: relative;
-}
-.team-score-card {
-  height: 195px;
-  text-align: center;
-  padding: 15px 19px 13px;
-  border: 1px solid;
-  border-radius: 13px;
-}
-.team-score-card--blue {
-  background: linear-gradient(145deg, #123b55, #081b29);
-  border-color: #447b9b;
-}
-.team-score-card--red {
-  background: linear-gradient(145deg, #542928, #221817);
-  border-color: #ad6257;
-}
-.team-score-card h3 {
-  font-size: 25px;
-  font-weight: 500;
-  line-height: 1.5;
-}
-.team-short-name {
-  font-size: 17px;
-  color: var(--stone);
-}
-.team-score-card .number-counter {
-  display: block;
-  font-size: 68px;
-  color: var(--ivory);
-  direction: ltr;
-  line-height: 1.3;
-}
-.competition-members {
   display: flex;
   align-items: center;
   justify-content: center;
-  gap: 6px;
-  font-size: 15px;
-  color: var(--stone);
+  gap: 14px;
+  font-size: 29px;
+  color: var(--ivory);
 }
-.competition-members > div {
-  display: flex;
-  gap: 4px;
-  margin-right: 5px;
-}
-.competition-members i {
-  width: 15px;
-  height: 15px;
-  background: rgb(234 222 195 / 65%);
-  border-radius: 50%;
-  border: 2px solid rgb(255 255 255 / 16%);
-}
-.team-versus {
+.basira-s07 .s07-milestones li:not(:last-child)::after {
+  content: '‹';
   position: absolute;
-  top: 77px;
-  left: 50%;
-  transform: translateX(-50%);
-  border: 1px solid rgb(200 169 104 / 40%);
-  background: #061018;
-  border-radius: 50%;
-  width: 40px;
-  height: 40px;
-  display: grid;
-  place-items: center;
-  font-size: 15px;
+  left: -5px;
+  color: var(--gold);
+  opacity: 0.6;
+}
+.basira-s07 .s07-milestones svg {
   color: var(--gold);
 }
-.team-live-task {
-  display: grid;
-  grid-template-columns: 144px 1fr;
-  gap: 17px;
-  padding: 14px 16px;
-  min-height: 108px;
-  border: 1px solid rgb(200 169 104 / 25%);
-  border-radius: 10px;
-  background: #0b2025;
+.basira-s07 .s07-aside figure + figure {
+  margin-top: 20px;
 }
-.team-clock {
-  display: grid;
-  grid-template-columns: 25px 1fr;
-  gap: 7px;
+.basira-s07 .s07-support-screen {
+  height: 220px;
+}
+.basira-s07 .s07-aside figcaption {
+  font-size: 21px;
+  height: 37px;
+}
+.basira-s07 .s07-points {
+  display: flex;
   align-items: center;
+  gap: 14px;
+  height: 94px;
+  border-top: 1px solid rgb(200 169 104 / 25%);
+  border-bottom: 1px solid rgb(200 169 104 / 25%);
+  margin-top: 18px;
 }
-.team-clock > svg {
+.basira-s07 .s07-points > svg,
+.basira-s07 .s07-points .number-counter {
   color: var(--gold);
 }
-.team-clock > span {
-  font-size: 34px;
-  color: var(--gold);
+.basira-s07 .s07-points .number-counter {
+  font-size: 54px;
+  line-height: 1.1;
   direction: ltr;
 }
-.team-clock small {
-  grid-column: 1 / 3;
-  font-size: 15px;
+.basira-s07 .s07-points > span:last-child {
+  font-size: 23px;
+  line-height: 1.5;
+}
+.basira-s07 .s07-points small {
   color: var(--text-muted);
-  text-align: center;
+  font-size: 16px;
 }
-.team-task {
-  border-right: 1px solid rgb(200 169 104 / 25%);
-  padding-right: 17px;
+.basira-s07 .s07-achievement {
+  display: flex;
+  align-items: center;
+  gap: 12px;
+  color: var(--gold);
+  font-size: 24px;
+  line-height: 1.6;
+  margin-top: 18px;
 }
-.team-task small {
-  font-size: 15px;
+.basira-s07 .s07-achievement svg {
+  flex-shrink: 0;
+}
+
+/* Competition: large map, two scores, and a compact challenge narrative. */
+.basira-s08 .s08-layout {
+  display: grid;
+  grid-template-columns: 1296px 408px;
+  gap: 24px;
+  height: 100%;
+}
+.basira-s08 .s08-competition-screen {
+  height: 730px;
+}
+.basira-s08 .s08-main figcaption {
+  height: 44px;
+  margin-top: 10px;
+  font-size: 25px;
+}
+.basira-s08 .s08-main figcaption > svg {
   color: var(--gold);
 }
-.team-task p {
+.basira-s08 .s08-aside {
+  display: flex;
+  flex-direction: column;
+  gap: 14px;
+}
+.basira-s08 .s08-scoreboard {
+  display: grid;
+  grid-template-columns: 1fr 1fr;
+  gap: 16px;
+}
+.basira-s08 .s08-team {
+  text-align: center;
+  height: 190px;
+  padding: 14px 9px;
+  border-top: 2px solid;
+  border-radius: 6px;
+}
+.basira-s08 .s08-team--green {
+  border-color: #83b77c;
+  background: linear-gradient(180deg, rgb(64 109 69 / 42%), transparent);
+}
+.basira-s08 .s08-team--blue {
+  border-color: #6aafd0;
+  background: linear-gradient(180deg, rgb(32 86 114 / 42%), transparent);
+}
+.basira-s08 .s08-team h3 {
   font-size: 25px;
+  line-height: 1.5;
+}
+.basira-s08 .s08-team > span:not(.number-counter) {
+  font-size: 16px;
+  color: var(--text-muted);
+}
+.basira-s08 .s08-team .number-counter {
+  display: block;
+  font-size: 64px;
+  line-height: 1.15;
+  direction: ltr;
+  color: var(--ivory);
+}
+.basira-s08 .s08-team p {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  gap: 8px;
+  color: var(--stone);
+  font-size: 16px;
+  line-height: 1.5;
+}
+.basira-s08 .s08-clock {
+  display: flex;
+  align-items: center;
+  gap: 14px;
+  height: 54px;
+  border-bottom: 1px solid rgb(200 169 104 / 25%);
+}
+.basira-s08 .s08-clock > svg,
+.basira-s08 .s08-clock strong {
+  color: var(--gold);
+}
+.basira-s08 .s08-clock strong {
+  font-size: 34px;
+  font-weight: 500;
+  direction: ltr;
+}
+.basira-s08 .s08-clock span {
+  color: var(--text-muted);
+  font-size: 20px;
+  margin-right: auto;
+}
+.basira-s08 .s08-task small {
+  color: var(--gold);
+  font-size: 18px;
+}
+.basira-s08 .s08-task p {
+  font-size: 30px;
   line-height: 1.5;
   margin-top: 3px;
 }
-.team-task > span {
-  display: block;
-  font-size: 15px;
-  color: var(--text-muted);
-  margin-top: 4px;
-}
-.team-progress-panel {
-  padding: 8px 6px;
-}
-.team-progress-row {
+.basira-s08 .s08-progress {
   display: grid;
-  grid-template-columns: 61px 1fr 45px;
-  gap: 11px;
+  gap: 7px;
+  padding: 6px 0;
+}
+.basira-s08 .s08-progress-row {
+  display: grid;
+  grid-template-columns: 58px 1fr 43px;
   align-items: center;
+  gap: 10px;
   font-size: 17px;
   color: var(--stone);
-  height: 33px;
+  height: 27px;
 }
-.team-progress-row > div {
-  height: 6px;
-  border-radius: 4px;
-  background: rgb(244 237 223 / 8%);
+.basira-s08 .s08-progress-row > div {
+  height: 5px;
+  border-radius: 5px;
+  background: rgb(244 237 223 / 9%);
   overflow: hidden;
 }
-.team-progress-row i {
+.basira-s08 .s08-progress-row i {
   display: block;
   height: 100%;
   border-radius: inherit;
 }
-.team-progress-row--blue i {
+.basira-s08 .s08-progress-row--green i {
+  background: #83b77c;
+}
+.basira-s08 .s08-progress-row--blue i {
   background: #6aafd0;
 }
-.team-progress-row--red i {
-  background: #cc8576;
-}
-.team-progress-row small {
+.basira-s08 .s08-progress-row small {
   font-size: 15px;
   direction: ltr;
 }
-.team-questions {
+.basira-s08 .s08-challenges {
   display: flex;
-  flex-direction: column;
-  gap: 12px;
+  flex-wrap: wrap;
+  gap: 8px 13px;
+  padding-bottom: 4px;
 }
-.team-questions p {
+.basira-s08 .s08-challenges span {
   display: flex;
   align-items: center;
-  gap: 13px;
-  min-height: 48px;
-  padding: 6px 13px;
-  font-size: 23px;
+  gap: 6px;
+  font-size: 18px;
   line-height: 1.5;
-  color: var(--ivory);
-  background: linear-gradient(270deg, rgb(24 59 54 / 70%), transparent);
-  border-right: 2px solid var(--gold);
+  color: var(--stone);
 }
-.team-questions p span {
+.basira-s08 .s08-challenges svg {
   color: var(--gold);
-  font-size: 15px;
-  opacity: 0.7;
+}
+.basira-s08 .s08-questions {
+  display: grid;
+  gap: 6px;
+  padding: 10px 0 0;
+  margin: 0;
+  list-style: none;
+  border-top: 1px solid rgb(200 169 104 / 25%);
+}
+.basira-s08 .s08-questions li {
+  display: flex;
+  align-items: center;
+  gap: 12px;
+  min-height: 40px;
+  font-size: 24px;
+  line-height: 1.5;
+}
+.basira-s08 .s08-questions small {
+  color: var(--gold);
+  font-size: 14px;
+}
+.basira-s08 .s08-example {
+  color: var(--text-muted);
+  font-size: 16px;
+  line-height: 1.5;
 }

@@ -65,7 +65,7 @@ export function Presentation() {
           data-ready={ready}
           data-scene-id={presentation.scene.id}
         >
-          <AnimatePresence mode="wait" initial={false}>
+          <AnimatePresence mode="sync" initial={false}>
             {!ready ? (
               <motion.div
                 key="loading"
@@ -85,7 +85,7 @@ export function Presentation() {
                 initial={{ opacity: 0 }}
                 animate={{ opacity: 1 }}
                 exit={{ opacity: 0 }}
-                transition={{ duration: reduceMotion ? 0 : 0.35, ease: 'easeInOut' }}
+                transition={{ duration: reduceMotion ? 0 : 0.24, ease: 'easeInOut' }}
               >
                 <Scene
                   definition={presentation.scene}
@@ -104,8 +104,6 @@ export function Presentation() {
         <PresenterControls
           sceneNumber={presentation.scene.number}
           sceneCount={scenes.length}
-          step={presentation.step}
-          totalSteps={presentation.scene.totalSteps}
           previous={presentation.previous}
           next={presentation.next}
           restart={presentation.restart}
@@ -116,8 +114,7 @@ export function Presentation() {
         />
       )}
       <p className="sr-only" role="status" aria-live="polite">
-        المشهد {presentation.scene.number}: {presentation.scene.title}، الخطوة{' '}
-        {presentation.step + 1} من {presentation.scene.totalSteps}
+        الشريحة {presentation.scene.number} من {scenes.length}: {presentation.scene.title}
       </p>
       {fullscreen.error && (
         <div className="fullscreen-notice" role="status">

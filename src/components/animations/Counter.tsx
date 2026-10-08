@@ -19,7 +19,7 @@ export function Counter({
   value,
   visible,
   from = 0,
-  duration = 1.5,
+  duration = 0.65,
   decimals = 0,
   prefix = '',
   suffix = '',

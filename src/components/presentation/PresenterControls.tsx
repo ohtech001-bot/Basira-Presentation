@@ -6,8 +6,6 @@ import { FullscreenButton } from './FullscreenButton';
 interface Props {
   sceneNumber: number;
   sceneCount: number;
-  step: number;
-  totalSteps: number;
   previous: () => void;
   next: () => void;
   restart: () => void;
@@ -68,14 +66,10 @@ export function PresenterControls(props: Props) {
       </button>
       <span
         className="control-position"
-        aria-label={`المشهد ${props.sceneNumber} من ${props.sceneCount}، الخطوة ${props.step + 1} من ${props.totalSteps}`}
+        aria-label={`الشريحة ${props.sceneNumber} من ${props.sceneCount}`}
       >
         <b>{String(props.sceneNumber).padStart(2, '0')}</b>
         <span> / {props.sceneCount}</span>
-        <i />{' '}
-        <small>
-          {props.step + 1} / {props.totalSteps}
-        </small>
       </span>
       <button type="button" disabled={props.isLast} onClick={props.next} title="التالي (→ / Space)">
         <span>التالي</span>
@@ -86,8 +80,8 @@ export function PresenterControls(props: Props) {
         type="button"
         className="control-icon"
         onClick={props.restart}
-        aria-label="إعادة المشهد"
-        title="إعادة المشهد (R)"
+        aria-label="إعادة الشريحة"
+        title="إعادة الشريحة (R)"
       >
         <RotateCcw size={20} />
       </button>

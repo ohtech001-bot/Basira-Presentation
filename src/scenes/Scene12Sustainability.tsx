@@ -7,7 +7,7 @@ import { timeline } from '../data/timeline';
 
 const phaseIcons = [BookOpenCheck, Boxes, Gamepad2, Rocket];
 
-export function Scene12Sustainability({ currentStep, title, number }: SceneProps) {
+export function Scene12Sustainability({ title, number }: SceneProps) {
   const reduceMotion = useReducedMotion();
   return (
     <ProductScene
@@ -20,43 +20,37 @@ export function Scene12Sustainability({ currentStep, title, number }: SceneProps
         <div className="timeline-track-base" />
         <motion.div
           className="timeline-track-gold"
-          initial={false}
-          animate={{ scaleX: Math.min(1, currentStep / 4) }}
-          transition={{ duration: reduceMotion ? 0 : 1.2, ease: [0.22, 1, 0.36, 1] }}
+          initial={{ scaleX: reduceMotion ? 1 : 0 }}
+          animate={{ scaleX: 1 }}
+          transition={{ duration: reduceMotion ? 0 : 0.6 }}
         />
       </div>
-      <div className="timeline-phases">
+      <div className="timeline-phases story-enter">
         {timeline.map((phase, index) => {
           const Icon = phaseIcons[index];
           return (
-            <div
-              key={phase.id}
-              className={`timeline-phase ${currentStep >= phase.number ? 'is-visible' : ''}`}
-            >
-              <CinematicReveal visible={currentStep >= phase.number} className="timeline-phase-top">
+            <CinematicReveal key={phase.id} visible className="timeline-phase">
+              <div className="timeline-phase-top">
                 <span className="story-eyebrow">
                   المرحلة {String(phase.number).padStart(2, '0')}
                 </span>
-                <Icon size={58} strokeWidth={1.1} />
-              </CinematicReveal>
+                <Icon size={72} strokeWidth={1.1} />
+              </div>
               <span className="timeline-point" aria-hidden="true">
                 {phase.number}
               </span>
-              <CinematicReveal
-                visible={currentStep >= phase.number}
-                className="timeline-phase-bottom"
-              >
+              <div className="timeline-phase-bottom">
                 <h2>{phase.label}</h2>
                 <p>{phase.duration}</p>
-              </CinematicReveal>
-            </div>
+              </div>
+            </CinematicReveal>
           );
         })}
       </div>
-      <CinematicReveal visible={currentStep >= 4} className="timeline-continuous">
+      <div className="timeline-continuous">
         <span />
         تطوير مستمر يحافظ على جودة التجربة
-      </CinematicReveal>
+      </div>
     </ProductScene>
   );
 }
