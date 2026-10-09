@@ -2,6 +2,7 @@ import { Server, ShieldCheck, Globe2, Cloud, HeartHandshake } from 'lucide-react
 import type { SceneProps } from '../types/presentation';
 import { ProductScene } from '../components/presentation/ProductScene';
 import { CinematicReveal } from '../components/animations/CinematicReveal';
+import { Counter } from '../components/animations/Counter';
 import { budget } from '../data/budget';
 
 const operatingItems = [
@@ -23,7 +24,7 @@ export function Scene13Metrics({ title, number }: SceneProps) {
         <CinematicReveal visible className="budget-founding">
           <span className="story-eyebrow">الميزانية الأساسية</span>
           <div className="budget-amount" dir="ltr">
-            <span>{budget.foundingTotal.toLocaleString('en-US')}</span>
+            <Counter value={budget.foundingTotal} visible locale="en-US" duration={0.85} />
             <span>{budget.currencySymbol}</span>
           </div>
           <div className="budget-gold-rule" />
@@ -38,7 +39,13 @@ export function Scene13Metrics({ title, number }: SceneProps) {
             <div className="budget-monthly-amount">
               <span>حتى</span>
               <span dir="ltr">
-                {budget.monthlyOperatingCap} {budget.currencySymbol}
+                <Counter
+                  value={budget.monthlyOperatingCap}
+                  visible
+                  locale="en-US"
+                  duration={0.85}
+                />{' '}
+                {budget.currencySymbol}
               </span>
             </div>
           </CinematicReveal>

@@ -31,7 +31,8 @@ const inventory = JSON.parse(
   readFileSync(new URL('previews/asset-inventory.json', projectRoot), 'utf8'),
 ) as InventoryImage[];
 const imageFiles = (directory: URL) =>
-  readdirSync(directory)
+  readdirSync(directory, { recursive: true })
+    .map((file) => String(file).replaceAll('\\', '/'))
     .filter((file) => /\.(png|jpe?g|webp)$/i.test(file))
     .sort();
 const digest = (data: Buffer) => createHash('sha256').update(data).digest('hex');
@@ -97,14 +98,14 @@ function imageDimensions(data: Buffer, file: string) {
   throw new Error(`No WebP dimensions found: ${file}`);
 }
 
-test('all 17 supplied images have readable originals and verified display copies', () => {
-  assert.equal(inventory.length, 17);
+test('all 25 supplied images have readable originals and verified display copies', () => {
+  assert.equal(inventory.length, 25);
   assert.deepEqual(imageFiles(originalDirectory), inventory.map(({ file }) => file).sort());
   assert.deepEqual(
     imageFiles(servedDirectory),
     inventory.map(({ servedFile }) => servedFile).sort(),
   );
-  assert.equal(new Set(inventory.map(({ key }) => key)).size, 17);
+  assert.equal(new Set(inventory.map(({ key }) => key)).size, 25);
   for (const record of inventory) {
     const original = readFileSync(new URL(record.file, originalDirectory));
     const served = readFileSync(new URL(record.servedFile, servedDirectory));
@@ -171,6 +172,14 @@ test('the semantic registry includes all new named interfaces and accurate sourc
     competition: 'مسابقة جماعية.jpg',
     progress: 'تقدم الرحلة.png',
     mission: 'المهمة الحالية.jpg',
+    basitiyaSchool: 'معالم غير معروفة/المدرسة الباسطية.jpeg',
+    ghadiriyaSchool: 'معالم غير معروفة/المدرسة الغادرية.jpg',
+    muhaddithiyaSchool: 'معالم غير معروفة/المدرسة المحدثية.jpg',
+    qattaninGate: 'معالم غير معروفة/باب القطانين.jpg',
+    busiriSabil: 'معالم غير معروفة/سبيل البصيري.jpg',
+    magharibaSabil: 'معالم غير معروفة/سبيل باب المغاربة.jpg',
+    yusufAghaDome: 'معالم غير معروفة/قبة يوسف اغا.jpg',
+    jasminePlatform: 'معالم غير معروفة/مسطية الورود او مسطبة الياسمينة.jpg',
   };
   assert.deepEqual(
     Object.fromEntries(Object.entries(uiAssets).map(([key, { sourceFile }]) => [key, sourceFile])),

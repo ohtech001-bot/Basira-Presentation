@@ -3,6 +3,7 @@ import { BookOpenCheck, Boxes, Gamepad2, Rocket } from 'lucide-react';
 import type { SceneProps } from '../types/presentation';
 import { ProductScene } from '../components/presentation/ProductScene';
 import { CinematicReveal } from '../components/animations/CinematicReveal';
+import { AnimatedNumberText } from '../components/animations/AnimatedNumberText';
 import { timeline } from '../data/timeline';
 
 const phaseIcons = [BookOpenCheck, Boxes, Gamepad2, Rocket];
@@ -41,7 +42,9 @@ export function Scene12Sustainability({ title, number }: SceneProps) {
               </span>
               <div className="timeline-phase-bottom">
                 <h2>{phase.label}</h2>
-                <p>{phase.duration}</p>
+                <p>
+                  <AnimatedNumberText text={phase.duration} />
+                </p>
               </div>
             </CinematicReveal>
           );

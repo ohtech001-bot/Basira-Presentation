@@ -1,6 +1,7 @@
 import { useCallback, useEffect, useRef, useState } from 'react';
-import { ArrowLeft, ArrowRight, RotateCcw } from 'lucide-react';
+import { ArrowLeft, ArrowRight, Download, RotateCcw } from 'lucide-react';
 import { presentationConfig } from '../../config/presentation';
+import { isOfflinePresentation, offlinePresentationDownloadUrl } from '../../utils/offlineAssets';
 import { FullscreenButton } from './FullscreenButton';
 
 interface Props {
@@ -86,6 +87,18 @@ export function PresenterControls(props: Props) {
         <RotateCcw size={20} />
       </button>
       <FullscreenButton active={props.isFullscreen} onClick={props.toggleFullscreen} />
+      {!isOfflinePresentation() && (
+        <a
+          className="control-download"
+          href={offlinePresentationDownloadUrl}
+          download="Basira-Offline.html"
+          title="تحميل العرض كاملًا لتشغيله دون إنترنت"
+          aria-label="تحميل العرض لتشغيله دون إنترنت"
+        >
+          <Download size={19} />
+          <span>تحميل العرض</span>
+        </a>
+      )}
     </div>
   );
 }

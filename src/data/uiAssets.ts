@@ -1,3 +1,5 @@
+import { getUiAssetUrl } from '../utils/offlineAssets';
+
 export interface UiAsset {
   id: string;
   title: string;
@@ -33,10 +35,10 @@ const asset = (
   height,
   sourceWidth,
   sourceHeight,
-  src: `${import.meta.env?.BASE_URL ?? './'}assets/ui/${encodeURIComponent(servedFile)}`,
+  src: getUiAssetUrl(servedFile),
 });
 
-/** All 17 supplied images, with optimized copies that retain their complete frames. */
+/** All supplied images, with display copies that retain their complete frames. */
 export const uiAssets = {
   logo: asset(
     'logo',
@@ -201,28 +203,128 @@ export const uiAssets = {
     5225,
     2941,
   ),
+  basitiyaSchool: asset(
+    'basitiyaSchool',
+    'المدرسة الباسطية',
+    'صورة المعلم الأصلية من مجلد معالم غير معروفة',
+    'معالم غير معروفة/المدرسة الباسطية.jpeg',
+    'المدرسة الباسطية.jpeg',
+    1050,
+    873,
+    1050,
+    873,
+  ),
+  ghadiriyaSchool: asset(
+    'ghadiriyaSchool',
+    'المدرسة الغادرية',
+    'صورة المعلم الأصلية من مجلد معالم غير معروفة',
+    'معالم غير معروفة/المدرسة الغادرية.jpg',
+    'ghadiriyaSchool.webp',
+    1220,
+    908,
+    1220,
+    908,
+  ),
+  muhaddithiyaSchool: asset(
+    'muhaddithiyaSchool',
+    'المدرسة المحدثية',
+    'صورة المعلم الأصلية من مجلد معالم غير معروفة',
+    'معالم غير معروفة/المدرسة المحدثية.jpg',
+    'المدرسة المحدثية.jpg',
+    1080,
+    1350,
+    1080,
+    1350,
+  ),
+  qattaninGate: asset(
+    'qattaninGate',
+    'باب القطانين',
+    'صورة المعلم الأصلية من مجلد معالم غير معروفة',
+    'معالم غير معروفة/باب القطانين.jpg',
+    'باب القطانين.jpg',
+    1066,
+    1600,
+    1066,
+    1600,
+  ),
+  busiriSabil: asset(
+    'busiriSabil',
+    'سبيل البصيري',
+    'صورة المعلم الأصلية من مجلد معالم غير معروفة',
+    'معالم غير معروفة/سبيل البصيري.jpg',
+    'سبيل البصيري.jpg',
+    743,
+    796,
+    743,
+    796,
+  ),
+  magharibaSabil: asset(
+    'magharibaSabil',
+    'سبيل باب المغاربة',
+    'صورة المعلم الأصلية من مجلد معالم غير معروفة',
+    'معالم غير معروفة/سبيل باب المغاربة.jpg',
+    'سبيل باب المغاربة.jpg',
+    925,
+    706,
+    925,
+    706,
+  ),
+  yusufAghaDome: asset(
+    'yusufAghaDome',
+    'قبة يوسف آغا',
+    'صورة المعلم الأصلية من مجلد معالم غير معروفة',
+    'معالم غير معروفة/قبة يوسف اغا.jpg',
+    'قبة يوسف اغا.jpg',
+    990,
+    625,
+    990,
+    625,
+  ),
+  jasminePlatform: asset(
+    'jasminePlatform',
+    'مسطبة الورود / الياسمينة',
+    'صورة المعلم الأصلية من مجلد معالم غير معروفة',
+    'معالم غير معروفة/مسطية الورود او مسطبة الياسمينة.jpg',
+    'مسطية الورود او مسطبة الياسمينة.jpg',
+    1021,
+    766,
+    1021,
+    766,
+  ),
 } as const;
 
 export type UiAssetKey = keyof typeof uiAssets;
+export const unknownLandmarkKeys = [
+  'basitiyaSchool',
+  'ghadiriyaSchool',
+  'muhaddithiyaSchool',
+  'qattaninGate',
+  'busiriSabil',
+  'magharibaSabil',
+  'yusufAghaDome',
+  'jasminePlatform',
+] as const satisfies readonly UiAssetKey[];
 export const interfaceAssets = Object.values(uiAssets).filter(
-  ({ id }) => !['logo', 'qaytbay-sabil'].includes(id),
+  ({ id }) => !['logo', 'qaytbay-sabil', ...unknownLandmarkKeys].includes(id),
 );
 
 /** Keep near-scene preloads bounded; far scenes remain on demand. */
 export const sceneAssetKeys: Record<number, readonly UiAssetKey[]> = {
-  1: ['qaytbay'],
+  1: ['logo'],
   2: ['qaytbay'],
-  3: ['logo', 'exploration'],
-  4: ['exploration', 'map', 'landmark'],
-  5: ['landmark', 'dome', 'library', 'tours'],
-  6: ['map', 'mission'],
-  7: ['quiz', 'profile', 'progress'],
-  8: ['competition'],
-  9: [],
-  10: ['home', 'map', 'exploration', 'landmark', 'quiz', 'competition'],
-  11: ['exploration'],
-  12: [],
-  13: [],
+  3: ['qaytbay'],
+  4: unknownLandmarkKeys,
+  5: ['logo', 'exploration'],
+  6: ['exploration', 'map', 'landmark'],
+  7: ['landmark', 'dome', 'library', 'tours'],
+  8: ['map', 'mission'],
+  9: ['quiz', 'profile', 'progress'],
+  10: ['competition'],
+  11: [],
+  12: ['home', 'map', 'exploration', 'landmark', 'quiz', 'competition'],
+  13: ['exploration'],
   14: [],
-  15: ['logo'],
+  15: [],
+  16: [],
+  17: ['logo'],
 };

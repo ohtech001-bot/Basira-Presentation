@@ -424,7 +424,7 @@
   background: var(--gold);
 }
 
-/* Exact approved figures, without count-up delays or invented allocations. */
+/* Exact approved figures, with brief automatic counters and no invented allocations. */
 .story-budget .budget-layout {
   display: grid;
   grid-template-columns: 1.16fr 1fr;

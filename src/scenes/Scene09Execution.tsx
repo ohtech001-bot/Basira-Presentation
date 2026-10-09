@@ -2,6 +2,7 @@ import { Baby, BookOpen, GraduationCap, School, UsersRound, Building2, Globe2 } 
 import type { SceneProps } from '../types/presentation';
 import { ProductScene } from '../components/presentation/ProductScene';
 import { CinematicReveal } from '../components/animations/CinematicReveal';
+import { AnimatedNumberText } from '../components/animations/AnimatedNumberText';
 
 const audiences = [
   { label: 'الأطفال من عمر 5 سنوات فما فوق', icon: Baby },
@@ -25,7 +26,9 @@ export function Scene09Execution({ title, number }: SceneProps) {
           {audiences.map(({ label, icon: Icon }) => (
             <CinematicReveal key={label} visible className="audience-card">
               <Icon size={47} strokeWidth={1.3} />
-              <h2>{label}</h2>
+              <h2>
+                <AnimatedNumberText text={label} />
+              </h2>
             </CinematicReveal>
           ))}
         </div>

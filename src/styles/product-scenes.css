@@ -336,7 +336,7 @@
   font-size: 16px;
   color: var(--text-muted);
 }
-.basira-s08 .s08-team .number-counter {
+.basira-s08 .s08-team > .number-counter {
   display: block;
   font-size: 64px;
   line-height: 1.15;

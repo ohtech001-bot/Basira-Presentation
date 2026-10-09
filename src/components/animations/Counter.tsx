@@ -1,4 +1,4 @@
-import { useEffect, useRef, useState } from 'react';
+import { useEffect, useMemo, useRef, useState } from 'react';
 import { useReducedMotion } from 'framer-motion';
 import { gsap } from 'gsap';
 import clsx from 'clsx';
@@ -19,7 +19,7 @@ export function Counter({
   value,
   visible,
   from = 0,
-  duration = 0.65,
+  duration = 0.75,
   decimals = 0,
   prefix = '',
   suffix = '',
@@ -45,10 +45,14 @@ export function Counter({
   }, [visible, target, origin, duration, reduceMotion]);
 
   const precision = Math.min(20, Math.max(0, Math.floor(decimals)));
-  const format = new Intl.NumberFormat(locale, {
-    minimumFractionDigits: precision,
-    maximumFractionDigits: precision,
-  });
+  const format = useMemo(
+    () =>
+      new Intl.NumberFormat(locale, {
+        minimumFractionDigits: precision,
+        maximumFractionDigits: precision,
+      }),
+    [locale, precision],
+  );
 
   return (
     <span className={clsx('number-counter', className)} aria-hidden={!visible}>

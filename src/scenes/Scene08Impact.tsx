@@ -51,9 +51,10 @@ export function Scene08Impact({ title, number }: SceneProps) {
               >
                 <h3>{team.label}</h3>
                 <span>{team.name}</span>
-                <Counter value={team.points} visible locale="en" duration={0.5} />
+                <Counter value={team.points} visible locale="en" duration={0.75} />
                 <p>
-                  <Users size={18} aria-hidden="true" />٤ أعضاء
+                  <Users size={18} aria-hidden="true" />
+                  <Counter value={4} visible /> أعضاء
                 </p>
               </div>
             ))}
@@ -75,9 +76,15 @@ export function Scene08Impact({ title, number }: SceneProps) {
               >
                 <span>{team.name}</span>
                 <div>
-                  <i style={{ width: team.progress + '%' }} />
+                  <motion.i
+                    initial={{ width: reducedMotion ? team.progress + '%' : '0%' }}
+                    animate={{ width: team.progress + '%' }}
+                    transition={{ duration: reducedMotion ? 0 : 0.75, ease: 'easeOut' }}
+                  />
                 </div>
-                <small>{team.progress}%</small>
+                <small>
+                  <Counter value={team.progress} visible locale="en" suffix="%" />
+                </small>
               </div>
             ))}
           </div>

@@ -27,6 +27,14 @@ ASSET_FILES = {
     'competition': 'مسابقة جماعية.jpg',
     'progress': 'تقدم الرحلة.png',
     'mission': 'المهمة الحالية.jpg',
+    'basitiyaSchool': 'معالم غير معروفة/المدرسة الباسطية.jpeg',
+    'ghadiriyaSchool': 'معالم غير معروفة/المدرسة الغادرية.jpg',
+    'muhaddithiyaSchool': 'معالم غير معروفة/المدرسة المحدثية.jpg',
+    'qattaninGate': 'معالم غير معروفة/باب القطانين.jpg',
+    'busiriSabil': 'معالم غير معروفة/سبيل البصيري.jpg',
+    'magharibaSabil': 'معالم غير معروفة/سبيل باب المغاربة.jpg',
+    'yusufAghaDome': 'معالم غير معروفة/قبة يوسف اغا.jpg',
+    'jasminePlatform': 'معالم غير معروفة/مسطية الورود او مسطبة الياسمينة.jpg',
 }
 
 root = Path(__file__).resolve().parents[1]
@@ -34,9 +42,9 @@ source_directory = root / 'ui'
 served_directory = root / 'public' / 'assets' / 'ui'
 served_directory.mkdir(parents=True, exist_ok=True)
 assert served_directory.resolve().is_relative_to(root.resolve())
-files = sorted(file for file in source_directory.iterdir()
+files = sorted(file for file in source_directory.rglob('*')
                if file.suffix.lower() in {'.png', '.jpg', '.jpeg', '.webp'})
-assert {file.name for file in files} == set(ASSET_FILES.values()), 'Asset mapping must include every supplied image'
+assert {file.relative_to(source_directory).as_posix() for file in files} == set(ASSET_FILES.values()), 'Asset mapping must include every supplied image'
 key_by_file = {file: key for key, file in ASSET_FILES.items()}
 font = ImageFont.truetype('C:/Windows/Fonts/arial.ttf', 20)
 sheet = Image.new('RGB', (1800, ((len(files) + 2) // 3) * 350), '#102029')
@@ -44,7 +52,8 @@ draw = ImageDraw.Draw(sheet)
 records = []
 
 for index, file in enumerate(files):
-    key = key_by_file[file.name]
+    source_file = file.relative_to(source_directory).as_posix()
+    key = key_by_file[source_file]
     with Image.open(file) as source:
         source.load()
         keep_original = key == 'logo' or (
@@ -68,7 +77,7 @@ for index, file in enumerate(files):
             display.save(served_path, format='WEBP', **options)
         with Image.open(served_path) as served:
             records.append({
-                'index': index, 'key': key, 'file': file.name,
+                'index': index, 'key': key, 'file': source_file,
                 'width': source.width, 'height': source.height,
                 'bytes': file.stat().st_size,
                 'sha256': hashlib.sha256(file.read_bytes()).hexdigest(),

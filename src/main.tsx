@@ -10,6 +10,7 @@ import './styles/product.css';
 import './styles/product-scenes.css';
 import './styles/story-scenes.css';
 import './styles/opening-slides.css';
+import './styles/unknown-landmarks.css';
 
 for (const [name, value] of Object.entries(theme.colors)) {
   const property = name.replace(/[A-Z]/g, (character) => `-${character.toLowerCase()}`);

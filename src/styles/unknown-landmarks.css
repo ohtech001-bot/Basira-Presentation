@@ -1,0 +1,68 @@
+.basira-unknown-landmarks .product-heading h1 {
+  font-size: 52px;
+  line-height: 1.35;
+  margin-top: 10px;
+}
+
+.basira-unknown-landmarks .product-heading p {
+  margin-top: 9px;
+}
+
+.unknown-landmarks-grid {
+  display: grid;
+  grid-template-columns: repeat(4, minmax(0, 1fr));
+  grid-template-rows: repeat(2, minmax(0, 1fr));
+  gap: 20px 22px;
+  height: 100%;
+}
+
+.unknown-landmark-card {
+  display: flex;
+  flex-direction: column;
+  margin: 0;
+  min-width: 0;
+  min-height: 0;
+  padding: 8px 8px 0;
+  border: 1px solid rgb(200 169 104 / 27%);
+  border-radius: 12px;
+  background: linear-gradient(145deg, #122b30, #0b1e27);
+  box-shadow: 0 14px 35px rgb(0 0 0 / 18%);
+  overflow: hidden;
+}
+
+.unknown-landmark-photo {
+  flex: 1;
+  min-height: 0;
+  overflow: hidden;
+  border-radius: 6px;
+}
+
+.unknown-landmark-photo .ui-image {
+  background: #07141d;
+}
+
+.unknown-landmark-card figcaption {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  gap: 12px;
+  flex-shrink: 0;
+  height: 65px;
+  color: var(--ivory);
+  font-size: 25px;
+  line-height: 1.4;
+  text-align: center;
+}
+
+.unknown-landmark-card figcaption i {
+  width: 5px;
+  height: 5px;
+  flex-shrink: 0;
+  border-radius: 50%;
+  background: var(--gold);
+  box-shadow: 0 0 12px rgb(200 169 104 / 30%);
+}
+
+.unknown-landmark-card figcaption span {
+  min-width: 0;
+}

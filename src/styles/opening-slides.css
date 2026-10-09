@@ -1,3 +1,44 @@
+.deck-brand-opening {
+  background: #000;
+}
+.deck-brand-opening-content {
+  height: 100%;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+  gap: 40px;
+  padding-bottom: 36px;
+}
+.deck-brand-opening-logo .basira-mark__symbol {
+  width: 720px;
+  height: 720px;
+}
+.deck-brand-opening-words {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  gap: 90px;
+  list-style: none;
+  margin: 0;
+  padding: 0;
+  color: var(--ivory);
+  font-size: 44px;
+  line-height: 1.5;
+}
+.deck-brand-opening-words li {
+  display: flex;
+  align-items: center;
+  gap: 16px;
+}
+.deck-brand-opening-words li::before {
+  content: '';
+  width: 8px;
+  height: 8px;
+  flex-shrink: 0;
+  border-radius: 50%;
+  background: var(--gold);
+}
 .deck-opening {
   background: #07151f;
 }

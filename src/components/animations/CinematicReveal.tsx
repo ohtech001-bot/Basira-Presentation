@@ -16,13 +16,13 @@ export function CinematicReveal({ visible, children, className, delay = 0 }: Cin
   return (
     <motion.div
       className={clsx('cinematic-reveal', className)}
-      initial={reduceMotion ? false : { opacity: 0, y: 12 }}
+      initial={reduceMotion ? false : { opacity: 0, y: 10 }}
       animate={{
         opacity: visible ? 1 : 0,
-        y: reduceMotion ? 0 : visible ? 0 : 12,
+        y: reduceMotion ? 0 : visible ? 0 : 10,
       }}
       transition={{
-        duration: reduceMotion ? 0 : 0.45,
+        duration: reduceMotion ? 0 : 0.5,
         delay: visible && !reduceMotion ? delay : 0,
         ease: [0.22, 1, 0.36, 1],
       }}

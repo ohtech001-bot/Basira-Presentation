@@ -18,14 +18,26 @@ try {
   const usedAssets = new Set();
   let checkedSteps = 0;
   const requiredText = {
-    1: ['هل تعرف', 'هذا المعلم؟', 'وهل تعرف أين يقع'],
-    2: ['سبيل قايتباي', 'معرفة محدودة بالمعالم', 'معلومات متفرقة وغير تفاعلية'],
-    3: ['بصيرة', 'منظومة تفاعلية للتعريف بالمسجد الأقصى المبارك', 'نريده أن يدخله ويكتشفه'],
-    8: ['المسابقة الجماعية', '320', '280'],
-    11: ['الأهداف'],
-    13: ['6,000', '300', 'العمل تطوعي'],
-    14: ['محمد وجيه عمري', 'فيصل عدنان عمري', 'مجد مصالحة'],
-    15: [
+    'brand-opening': ['شعار بصيرة الأصلي', 'تعلّم', 'استكشف', 'تنافس'],
+    opening: ['هل تعرف', 'هذا المعلم؟', 'وهل تعرف أين يقع'],
+    problem: ['سبيل قايتباي', 'معرفة محدودة بالمعالم', 'معلومات متفرقة وغير تفاعلية'],
+    'unknown-landmarks': [
+      'كم من المعالم لا نعرفها في المسجد الاقصى المبارك ؟',
+      'المدرسة الباسطية',
+      'المدرسة الغادرية',
+      'المدرسة المحدثية',
+      'باب القطانين',
+      'سبيل البصيري',
+      'سبيل باب المغاربة',
+      'قبة يوسف آغا',
+      'الياسمينة',
+    ],
+    basira: ['بصيرة', 'منظومة تفاعلية للتعريف بالمسجد الأقصى المبارك', 'نريده أن يدخله ويكتشفه'],
+    competition: ['المسابقة الجماعية', '320', '280'],
+    impact: ['الأهداف'],
+    budget: ['6,000', '300', 'العمل تطوعي'],
+    team: ['محمد وجيه عمري', 'فيصل عدنان عمري', 'مجد مصالحة'],
+    vision: [
       'Interactive Simulation',
       'Schools',
       'Multiple Languages',
@@ -34,8 +46,14 @@ try {
       'شاهد المكان، اكتشف معالمه، واعرف قصته.',
     ],
   };
-  assert.equal(scenes.length, 15);
-  assert.equal(new Set(scenes.map(({ id }) => id)).size, 15);
+  assert.equal(scenes.length, 17);
+  assert.equal(scenes[0].id, 'brand-opening', 'The logo slide must open the presentation');
+  assert.equal(scenes[1].id, 'opening', 'The landmark question must follow the logo');
+  assert.equal(new Set(scenes.map(({ id }) => id)).size, scenes.length);
+  assert.deepEqual(
+    scenes.map(({ number }) => number),
+    Array.from({ length: scenes.length }, (_, i) => i + 1),
+  );
   const results = [];
   for (const scene of scenes) {
     assert.equal(scene.totalSteps, 1, `Slide ${scene.number} still requires extra clicks`);
@@ -58,15 +76,20 @@ try {
         !markup.includes('الهيكل جاهز لإضافة المحتوى'),
         `Scene ${scene.number} still uses a scaffold`,
       );
-      for (const text of requiredText[scene.number] ?? []) {
+      for (const text of requiredText[scene.id] ?? []) {
         assert.ok(
           markup.includes(text),
           `Missing first-entry content on slide ${scene.number}: ${text}`,
         );
       }
-      if (scene.number === 1)
+      if (scene.id === 'opening')
         assert.ok(!markup.includes('سبيل قايتباي'), 'Opening reveals the answer');
-      if (scene.number === 8 && step === scene.totalSteps - 1) {
+      if (scene.id === 'brand-opening') {
+        assert.equal((markup.match(/<img\b/g) ?? []).length, 1, 'The cover only displays the logo');
+        assert.equal((markup.match(/<li\b/g) ?? []).length, 3, 'The cover displays three points');
+        assert.ok(!markup.includes('هل تعرف'), 'The cover has no landmark question');
+      }
+      if (scene.id === 'competition' && step === scene.totalSteps - 1) {
         assert.ok(markup.includes('المسابقة الجماعية'));
         assert.ok(markup.includes('320') && markup.includes('280'));
       }
